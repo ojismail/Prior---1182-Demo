@@ -10,20 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_21_121130) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_21_132827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "doctors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "gpt_templates", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "patient_session_id"
-    t.index ["patient_session_id"], name: "index_gpt_templates_on_patient_session_id"
   end
 
   create_table "patient_sessions", force: :cascade do |t|
