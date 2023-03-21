@@ -1,3 +1,3 @@
 class QuestionAndAnswer < ApplicationRecord
-  belongs_to :patient_session
+  belongs_to :consultation
 end
