@@ -1,6 +1,6 @@
-class CreateSicknesses < ActiveRecord::Migration[7.0]
+class CreateSymptoms < ActiveRecord::Migration[7.0]
   def change
-    create_table :sicknesses do |t|
+    create_table :symptoms do |t|
 
       t.timestamps
     end

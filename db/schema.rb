@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_21_142451) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_21_145450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_142451) do
     t.string "email"
     t.string "gpt_response"
     t.string "gpt_prompt"
+    t.integer "age"
+    t.string "gender"
   end
 
   create_table "question_and_answers", force: :cascade do |t|
@@ -50,15 +52,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_142451) do
     t.string "question_5"
   end
 
-  create_table "sicknesses", force: :cascade do |t|
+  create_table "symptoms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "patient_session_id", null: false
     t.string "name"
     t.boolean "archive"
-    t.index ["patient_session_id"], name: "index_sicknesses_on_patient_session_id"
+    t.index ["patient_session_id"], name: "index_symptoms_on_patient_session_id"
   end
 
   add_foreign_key "question_and_answers", "patient_sessions"
-  add_foreign_key "sicknesses", "patient_sessions"
+  add_foreign_key "symptoms", "patient_sessions"
 end

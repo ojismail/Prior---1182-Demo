@@ -1,3 +1,3 @@
 class Question < ApplicationRecord
-  belongs_to :sickness
+  belongs_to :symptom
 end

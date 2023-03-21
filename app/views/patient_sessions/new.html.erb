@@ -1,0 +1,8 @@
+<%= simple_form_for @patient_session do |f| %>
+  <%= f.input :email, required: true %>
+  <%= f.input :age, required: true %>
+  <%= f.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], required: true %>
+  <%= f.input :symptoms, as: :select, collection: ['Chest pain', 'Headache'], prompt: 'Select Symptom', required: true %>
+
+  <%= f.submit 'Create Patient Session' %>
+<% end %>
