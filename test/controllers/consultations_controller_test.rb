@@ -1,6 +1,6 @@
 require "test_helper"
 
-class GptTemplateTest < ActiveSupport::TestCase
+class ConsultationControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
