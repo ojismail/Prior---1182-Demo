@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'patients/index'
-  get 'patients/show'
-  get 'patients/new'
-  get 'patients/edit'
+  get 'users/index'
+  get 'users/show'
+  get 'users/new'
+  get 'users/edit'
   # devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -12,33 +12,28 @@ Rails.application.routes.draw do
 
   # User gets directed to landing page
   # Explain app to user
-  get 'patient_sessions/new', to: 'patient_sessions#new'
+  get 'consultations/new', to: 'consultations#new'
 
   # Users is asked for unique identifier on landing page & selects main problem
   # Explain app to user
-  post 'patient_sessions', to: 'patient_sessions#create'
+  post 'consultations', to: 'consultations#create'
 
   # User is asked their demographics and history via questionnaire
-  get 'patient_sessions/:id/edit', to: 'patient_sessions#edit', as: 'edit_patient_session'
-  patch 'patient_sessions/:id', to: 'patient_sessions#update'
+  get 'consultations/:id/edit', to: 'consultations#edit', as: 'edit_user_session'
+  patch 'consultations/:id', to: 'consultations#update'
 
   # # (Templated prompts sent as requests to GPT via API)
-  # post 'patient_sessions/:id', to: 'patient_sessions#create_prompt'
+  # post 'consultations/:id', to: 'consultations#create_prompt'
 
   # Doctor logs in
   # Doctor sees unique identifier and urgency rating
-  get 'patient_sessions', to: 'patient_sessions#index'
+  get 'consultations', to: 'consultations#index'
 
-  # Doctor selects patient entry
-  get 'patient_sessions/:id', to: 'patient_sessions#show', as: 'patient_session'
+  # Doctor selects user entry
+  get 'consultations/:id', to: 'consultations#show', as: 'user_session'
 
-  # Doctor is able to add notes and close patient entry
-  get 'patient_sessions/:id/edit', to: 'patient_sessions#edit'
+  # Doctor is able to add notes and close user entry
+  get 'consultations/:id/edit', to: 'consultations#edit'
 
-  patch 'patient_sessions/:id/close', to: 'patient_sessions#close'
-
-  # Doctor routes
-  resources :doctors, only: [:index, :show]
-
-
+  patch 'consultations/:id/close', to: 'consultations#close'
 end

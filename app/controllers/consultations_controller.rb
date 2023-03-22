@@ -51,6 +51,6 @@ class ConsultationController < ApplicationController
   private
 
   def consultation_params
-    params.require(:consultation).permit(:doctor_id, :email, :name, :age, :gender, :symptoms, :history)
+    params.require(:consultation).permit(:email, :name, :age, :gender, :symptom)
   end
 end
