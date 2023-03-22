@@ -1,0 +1,7 @@
+<% if current_user.role == 'doctor' %>
+  <%= link_to 'Consultation Index', consultations_path %>
+<% end %>
+
+<% if current_user.role == 'patient' %>
+  <%= link_to 'My Profile', user_path(current_user) %>
+<% end %>

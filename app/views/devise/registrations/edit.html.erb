@@ -21,6 +21,12 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :age, label: 'Age' %>
+    <%= f.input :gender, as: :radio_buttons, collection: [['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']], label: 'Gender' %>
+    <%= f.input :medical_history, label: 'Medical History' %>
+    <%= f.input :drug_history, label: 'Drug History' %>
+    <%= f.input :allergy_history, label: 'Allergy History' %>
+    <%= f.input :role, as: :radio_buttons, collection: [['Patient', 'patient'], ['Doctor', 'doctor']], label: 'Role' %>
   </div>
 
   <div class="form-actions">
