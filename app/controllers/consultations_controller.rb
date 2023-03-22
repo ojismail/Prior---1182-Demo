@@ -1,5 +1,7 @@
 class ConsultationController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create]
+  before_action :require_patient, only: [:index, :new, :show, :edit, :update]
+  before_action :require_doctor, only: [:index, :edit, :update, :destroy]
 
   def index
     @consultations = Consultation.all

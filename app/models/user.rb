@@ -4,4 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :consultation
+  enum role: [:patient, :doctor]
+  scope :doctors, -> { where(role: 'doctor') }
+  scope :patients, -> { where(role: 'patient') }
 end

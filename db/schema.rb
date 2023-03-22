@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_102954) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_22_110619) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_102954) do
     t.string "drug_history"
     t.string "allergy_history"
     t.string "password"
-    t.boolean "doctor_status", default: false
+    t.string "role"
   end
 
   add_foreign_key "consultations", "question_and_answers"
