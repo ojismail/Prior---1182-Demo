@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'users/new'
   get 'users/edit'
-  # devise_for :users
+  devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post 'consultations', to: 'consultations#create'
 
   # User is asked their demographics and history via questionnaire
-  get 'consultations/:id/edit', to: 'consultations#edit', as: 'edit_user_session'
+  get 'consultations/:id/edit', to: 'consultations#edit', as: 'edit_consultation'
   patch 'consultations/:id', to: 'consultations#update'
 
   # # (Templated prompts sent as requests to GPT via API)
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get 'consultations', to: 'consultations#index'
 
   # Doctor selects user entry
-  get 'consultations/:id', to: 'consultations#show', as: 'user_session'
+  get 'consultations/:id', to: 'consultations#show', as: 'consultation'
 
   # Doctor is able to add notes and close user entry
   get 'consultations/:id/edit', to: 'consultations#edit'
