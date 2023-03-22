@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_090236) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_22_102954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,30 +19,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_090236) do
     t.datetime "updated_at", null: false
     t.string "gpt_response"
     t.string "gpt_prompt"
-    t.bigint "patient_id", null: false
+    t.bigint "user_id", null: false
     t.bigint "symptom_id", null: false
     t.bigint "question_and_answer_id", null: false
     t.string "status"
     t.integer "rating"
-    t.index ["patient_id"], name: "index_consultations_on_patient_id"
     t.index ["question_and_answer_id"], name: "index_consultations_on_question_and_answer_id"
     t.index ["symptom_id"], name: "index_consultations_on_symptom_id"
-  end
-
-  create_table "doctors", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "patients", force: :cascade do |t|
-    t.integer "age"
-    t.string "gender"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "medical_history"
-    t.string "drug_history"
-    t.string "allergy_history"
+    t.index ["user_id"], name: "index_consultations_on_user_id"
   end
 
   create_table "question_and_answers", force: :cascade do |t|
@@ -74,8 +58,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_090236) do
     t.index ["question_id"], name: "index_symptoms_on_question_id"
   end
 
-  add_foreign_key "consultations", "patients"
+  create_table "users", force: :cascade do |t|
+    t.integer "age"
+    t.string "gender"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "medical_history"
+    t.string "drug_history"
+    t.string "allergy_history"
+    t.string "password"
+    t.boolean "doctor_status", default: false
+  end
+
   add_foreign_key "consultations", "question_and_answers"
   add_foreign_key "consultations", "symptoms"
+  add_foreign_key "consultations", "users"
   add_foreign_key "symptoms", "questions"
 end
