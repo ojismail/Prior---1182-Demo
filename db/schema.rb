@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_152709) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_22_155007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_152709) do
     t.string "password"
     t.string "role"
     t.string "encrypted_password"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
   end
 
   add_foreign_key "consultations", "question_and_answers"
