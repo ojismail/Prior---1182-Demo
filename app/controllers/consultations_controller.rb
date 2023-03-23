@@ -49,6 +49,13 @@ class ConsultationsController < ApplicationController
     redirect_to consultations_path, notice: 'Consultation was successfully closed.'
   end
 
+
+  def destroy
+    @consultation = Consultation.find(params[:id])
+    @consultation.destroy
+    redirect_to consultation_url, notice: "Consultation was successfully destroyed."
+  end
+
   def create_prompt
     # Code to create prompts and send them to GPT via API goes here
   end

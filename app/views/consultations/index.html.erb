@@ -10,9 +10,9 @@
 <ul>
   <% @consultations.each do |consultation| %>
     <li>
-      <%= link_to consultation.symptom.name, consultation_path(consultation) %>
+      <%= link_to consultation.symptom.name, consultation_path(consultation), title: consultation.symptom.name %>
       <br>
-      <strong>Symptom:</strong> <%= consultation.symptom %>
+      <strong>Symptom:</strong> <%= consultation.symptom_id %>
       <br>
       <strong>Patient ID:</strong> <%= consultation.user_id %>
       <br>
@@ -20,7 +20,7 @@
       <br>
       <strong>Gender:</strong> <%= consultation.user.gender %>
       <br>
-      <%# <strong>Status:</strong> <%= consultation.status.capitalize %> %>
+      <%= button_to 'Destroy', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
     </li>
-  <% end %>
+      <% end %>
 </ul>

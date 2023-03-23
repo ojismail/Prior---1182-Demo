@@ -11,5 +11,15 @@
 <%# <p><strong>Question and Answer:</strong> <%= @consultation.questionandanswer_id %></p>
 <%# <p><strong>GPT Prompt:</strong> <%= @consultation.gpt_prompt %>
 <%# <p><strong>GPT Response:</strong> <%= @consultation.gpt_response %></p>
+
+<h3>Questions and Answers</h3>
+<ul>
+  <li><strong><%= @consultation.symptom.question_1 %>:</strong> <%= @consultation.questionsandanswer_1 %></li>
+  <li><strong><%= @consultation.symptom.question_2 %>:</strong> <%= @consultation.questionsandanswer_2 %></li>
+  <li><strong><%= @consultation.symptom.question_3 %>:</strong> <%= @consultation.questionsandanswer_3 %></li>
+  <li><strong><%= @consultation.symptom.question_4 %>:</strong> <%= @consultation.questionsandanswer_4 %></li>
+  <li><strong><%= @consultation.symptom.question_5 %>:</strong> <%= @consultation.questionsandanswer_5 %></li>
+</ul>
+
 <%= link_to 'Edit', edit_consultation_path(@consultation) %> |
 <%= link_to 'Back', consultations_path %>
