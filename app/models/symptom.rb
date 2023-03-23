@@ -1,3 +1,3 @@
 class Symptom < ApplicationRecord
-  has_many :consultation
+  has_many :consultations
 end

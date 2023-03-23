@@ -1,23 +1,53 @@
 <% if current_user.doctor? %>
-  <p>Welcome, Doctor! You are not creating a consultation.</p>
-
-
-
+  <p>Welcome, Doctor! You cannot create a consultation.</p>
 <% else %>
-  <p>Welcome, Patient! Please enter your symptoms to begin a consultation.</p>
-
-<h1 style="color: #f73c2c;">Add a Symptom</h1>
-
-<%= simple_form_for @consultation do |f| %>
-  <%# <%= f.input :symptom_id, label: "Symptom ID", required: true %> %>
-  <br>
-  <br>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-  <br>
-  <br>
-  <%= link_to 'Cancel', consultations_path, class: 'btn btn-outline-danger' %>
-<% end %>
-
-
-
+  <p>Welcome, Patient! Please select your symptom to begin a consultation.</p>
+  <%= simple_form_for @consultation, data: { turbo: false } do |f| %>
+    <div class="form-group">
+      <%= f.label :symptom_id, "Select Symptom" %><br>
+      <% @symptoms.each do |symptom| %>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#symptom-<%= symptom.id %>">
+          <%= symptom.name %>
+        </button>
+        <div class="modal fade" id="symptom-<%= symptom.id %>" tabindex="-1" role="dialog" aria-labelledby="symptom-<%= symptom.id %>-label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="symptom-<%= symptom.id %>-label"><%= symptom.name %></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <%= f.hidden_field :symptom_id, value: symptom.id %>
+                <div class="form-group">
+                  <%= f.label :questionsandanswer_1, symptom.question_1 %>
+                  <%= f.text_field :questionsandanswer_1, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :questionsandanswer_2, symptom.question_2 %>
+                  <%= f.text_field :questionsandanswer_2, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :questionsandanswer_3, symptom.question_3 %>
+                  <%= f.text_field :questionsandanswer_3, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :questionsandanswer_4, symptom.question_4 %>
+                  <%= f.text_field :questionsandanswer_4, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :questionsandanswer_5, symptom.question_5 %>
+                  <%= f.text_field :questionsandanswer_5, class: "form-control" %>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <%= f.submit "Submit", class: "btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to 'Cancel', consultations_path, class: 'btn btn-outline-danger' %>
+  <% end %>
 <% end %>

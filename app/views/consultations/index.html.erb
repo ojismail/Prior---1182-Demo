@@ -1,31 +1,26 @@
-
 <% if current_user.doctor? %>
   <p>Welcome, Doctor! Below are your list of consultations.</p>
-  
+
 <% else %>
   <p>Welcome, Patient! These are your consultations.</p>
+<% end %>
 
 <h1>All Consultations</h1>
 
 <ul>
   <% @consultations.each do |consultation| %>
     <li>
-      <%= link_to consultation.name, consultation_path(consultation) %>
+      <%= link_to consultation.symptom.name, consultation_path(consultation) %>
       <br>
       <strong>Symptom:</strong> <%= consultation.symptom %>
       <br>
-      <strong>Patient Name:</strong> <%= consultation.name %>
+      <strong>Patient ID:</strong> <%= consultation.user_id %>
       <br>
-      <strong>Age:</strong> <%= consultation.age %>
+      <strong>Age:</strong> <%= consultation.user.age %>
       <br>
-      <strong>Gender:</strong> <%= consultation.gender %>
-      <% if consultation.closed %>
-        <span style="color:red;">Closed</span>
-      <% else %>
-        <span style="color:green;">Open</span>
-      <% end %>
+      <strong>Gender:</strong> <%= consultation.user.gender %>
+      <br>
+      <%# <strong>Status:</strong> <%= consultation.status.capitalize %> %>
     </li>
   <% end %>
 </ul>
-
-<% end %>

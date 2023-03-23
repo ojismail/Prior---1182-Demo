@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_23_102104) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_23_133055) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,22 +21,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_102104) do
     t.string "gpt_prompt"
     t.bigint "user_id", null: false
     t.bigint "symptom_id", null: false
-    t.bigint "question_and_answer_id", null: false
     t.string "status"
     t.integer "rating"
-    t.index ["question_and_answer_id"], name: "index_consultations_on_question_and_answer_id"
-    t.index ["symptom_id"], name: "index_consultations_on_symptom_id"
-    t.index ["user_id"], name: "index_consultations_on_user_id"
-  end
-
-  create_table "question_and_answers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "questionsandanswer_1"
     t.string "questionsandanswer_2"
     t.string "questionsandanswer_3"
     t.string "questionsandanswer_4"
     t.string "questionsandanswer_5"
+    t.index ["symptom_id"], name: "index_consultations_on_symptom_id"
+    t.index ["user_id"], name: "index_consultations_on_user_id"
   end
 
   create_table "symptoms", force: :cascade do |t|
@@ -73,7 +66,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_102104) do
     t.string "last_sign_in_ip"
   end
 
-  add_foreign_key "consultations", "question_and_answers"
   add_foreign_key "consultations", "symptoms"
   add_foreign_key "consultations", "users"
 end
