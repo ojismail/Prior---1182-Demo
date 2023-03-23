@@ -1,0 +1,8 @@
+<% if current_user.doctor? %>
+  <p>Welcome, Doctor! Please edit the consultation.</p>
+
+
+
+<% else %>
+  <p>Welcome, Patient! You should not edit the consultation.</p>
+<% end %>

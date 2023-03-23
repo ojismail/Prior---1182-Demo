@@ -1,0 +1,26 @@
+<h1>Symptoms#index</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @symptoms.each do |symptom| %>
+      <tr>
+        <td><%= symptom.name %></td>
+        <td>
+          <%= link_to 'Show', symptom_path(symptom) %>
+          <%= link_to 'Edit', edit_symptom_path(symptom) %>
+         <%= button_to 'Destroy', symptom_path(symptom), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<p>Find me in app/views/symptoms/index.html.erb</p>

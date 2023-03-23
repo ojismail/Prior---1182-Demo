@@ -1,0 +1,16 @@
+<h1>Symptoms#show</h1>
+
+
+<h1><%= @symptom.name %></h1>
+
+<p><strong>Question 1:</strong> <%= @symptom.question_1 %></p>
+<p><strong>Question 2:</strong> <%= @symptom.question_2 %></p>
+<p><strong>Question 3:</strong> <%= @symptom.question_3 %></p>
+<p><strong>Question 4:</strong> <%= @symptom.question_4 %></p>
+<p><strong>Question 5:</strong> <%= @symptom.question_5 %></p>
+
+<%= link_to 'Edit', edit_symptom_path(@symptom) %> |
+<%= link_to 'Back', symptoms_path %>
+
+
+<p>Find me in app/views/symptoms/show.html.erb</p>

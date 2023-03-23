@@ -1,0 +1,19 @@
+<h1>Symptoms#new</h1>
+
+<%= simple_form_for @symptom do |f| %>
+  <%= f.input :name, label: 'Symptom Name', required: true %>
+
+  <%= f.input :question_1, label: "Question 1", required: true %>
+  <%= f.input :question_2, label: "Question 2", required: true %>
+  <%= f.input :question_3, label: "Question 3", required: true %>
+  <%= f.input :question_4, label: "Question 4", required: true %>
+  <%= f.input :question_5, label: "Question 5", required: true %>
+
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
+
+
+
+
+
+<p>Find me in app/views/symptoms/new.html.erb</p>

@@ -1,8 +1,23 @@
-<%= simple_form_for @patient_session do |f| %>
-  <%= f.input :email, required: true %>
-  <%= f.input :age, required: true %>
-  <%= f.input :gender, as: :radio_buttons, collection: ['Male', 'Female'], required: true %>
-  <%= f.input :symptoms, as: :select, collection: ['Chest pain', 'Headache'], prompt: 'Select Symptom', required: true %>
+<% if current_user.doctor? %>
+  <p>Welcome, Doctor! You are not creating a consultation.</p>
 
-  <%= f.submit 'Create Patient Session' %>
+
+
+<% else %>
+  <p>Welcome, Patient! Please enter your symptoms to begin a consultation.</p>
+
+<h1 style="color: #f73c2c;">Add a Symptom</h1>
+
+<%= simple_form_for @consultation do |f| %>
+  <%# <%= f.input :symptom_id, label: "Symptom ID", required: true %> %>
+  <br>
+  <br>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+  <br>
+  <br>
+  <%= link_to 'Cancel', consultations_path, class: 'btn btn-outline-danger' %>
+<% end %>
+
+
+
 <% end %>
