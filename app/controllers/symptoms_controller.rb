@@ -45,6 +45,7 @@ class SymptomsController < ApplicationController
   end
 
   def symptom_params
-    params.require(:symptom).permit(:name, :archive, :question_id)
+    params.require(:symptom).permit(:name, :archive, :question_1, :question_2, :question_3, :question_4, :question_5)
   end
+
 end
