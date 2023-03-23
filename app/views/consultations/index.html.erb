@@ -1,7 +1,38 @@
+<<<<<<< Updated upstream
 <% if current_user.role == 'doctor' %>
   <%= link_to 'Consultation Index', consultations_path %>
 <% end %>
 
 <% if current_user.role == 'patient' %>
   <%= link_to 'My Profile', user_path(current_user) %>
+=======
+<% if current_user.doctor? %>
+  <p>Welcome, Doctor! Below are your list of consultations.</p>
+<% else %>
+  <p>Welcome, Patient! These are your consultations.</p>
+
+<h1>All Consultations</h1>
+
+<ul>
+  <% @consultations.each do |consultation| %>
+    <li>
+      <%= link_to consultation.name, consultation_path(consultation) %>
+      <br>
+      <strong>Symptom:</strong> <%= consultation.symptom %>
+      <br>
+      <strong>Patient Name:</strong> <%= consultation.name %>
+      <br>
+      <strong>Age:</strong> <%= consultation.age %>
+      <br>
+      <strong>Gender:</strong> <%= consultation.gender %>
+      <% if consultation.closed %>
+        <span style="color:red;">Closed</span>
+      <% else %>
+        <span style="color:green;">Open</span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+>>>>>>> Stashed changes
 <% end %>
