@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_155007) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_23_102104) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,23 +39,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_155007) do
     t.string "questionsandanswer_5"
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "question_1"
-    t.string "question_2"
-    t.string "question_3"
-    t.string "question_4"
-    t.string "question_5"
-  end
-
   create_table "symptoms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
     t.boolean "archive"
-    t.bigint "question_id", null: false
-    t.index ["question_id"], name: "index_symptoms_on_question_id"
+    t.string "question_1"
+    t.string "question_2"
+    t.string "question_3"
+    t.string "question_4"
+    t.string "question_5"
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,5 +76,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_155007) do
   add_foreign_key "consultations", "question_and_answers"
   add_foreign_key "consultations", "symptoms"
   add_foreign_key "consultations", "users"
-  add_foreign_key "symptoms", "questions"
 end

@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'symptoms/create'
   get 'symptoms/edit'
   get 'symptoms/update'
-  get 'symptoms/destroy'
   get 'users/index'
   get 'users/show'
   get 'users/new'
@@ -13,7 +12,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  get 'consultations/new', to: 'consultations#new'
+  get 'consultations/new', to: 'consultations#new', as: 'new_consultation'
   post 'consultations', to: 'consultations#create'
   get 'consultations/:id/edit', to: 'consultations#edit', as: 'edit_consultation'
   patch 'consultations/:id', to: 'consultations#update'
@@ -30,4 +29,6 @@ Rails.application.routes.draw do
   get 'symptoms/:id', to: 'symptoms#show', as: 'symptom'
   get 'symptoms/:id/edit', to: 'symptoms#edit'
   patch 'symptoms/:id/close', to: 'symptoms#close'
+  delete 'symptoms/:id', to: 'symptoms#destroy', as: 'destroy_symptom'
+
 end
