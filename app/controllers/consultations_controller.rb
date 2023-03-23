@@ -19,6 +19,8 @@ class ConsultationsController < ApplicationController
   def create
     @consultation = current_user.consultations.build(consultation_params)
 
+
+
     if @consultation.save
       redirect_to consultations_path, notice: 'Consultation was successfully created.'
     else
