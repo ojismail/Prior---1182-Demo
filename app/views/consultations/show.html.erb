@@ -1,8 +1,15 @@
 <% if current_user.doctor? %>
   <p>Welcome, Doctor! Below is the consultation/show.</p>
-
-
-
+  <p>Welcome, Doctor! Below is the consultation/show.</p>
 <% else %>
   <p>Welcome, Patient! Below is consultation/show.</p>
 <% end %>
+<h1>Consultation</h1>
+<%# <p><strong>Status:</strong> <%= @consultation.status %></p>
+<p><strong>User:</strong> <%= @consultation.user_id %></p>
+<p><strong>Symptom:</strong> <%= @consultation.symptom_id %></p>
+<%# <p><strong>Question and Answer:</strong> <%= @consultation.questionandanswer_id %></p>
+<%# <p><strong>GPT Prompt:</strong> <%= @consultation.gpt_prompt %>
+<%# <p><strong>GPT Response:</strong> <%= @consultation.gpt_response %></p>
+<%= link_to 'Edit', edit_consultation_path(@consultation) %> |
+<%= link_to 'Back', consultations_path %>

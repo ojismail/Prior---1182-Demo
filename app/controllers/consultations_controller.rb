@@ -13,14 +13,17 @@ class ConsultationsController < ApplicationController
 
   def new
     @consultation = Consultation.new
+    @symptoms = Symptom.all
   end
 
   def create
-    @consultation = Consultation.new(consultation_params)
+    @consultation = current_user.consultations.build(consultation_params)
 
     if @consultation.save
-      redirect_to edit_consultation_path(@consultation), notice: 'Consultation was successfully created.'
+      redirect_to consultations_path, notice: 'Consultation was successfully created.'
     else
+      @symptoms = Symptom.all
+      puts @consultation.errors.full_messages
       render :new
     end
   end
@@ -53,6 +56,6 @@ class ConsultationsController < ApplicationController
   private
 
   def consultation_params
-    params.require(:consultation).permit(:email, :name, :age, :gender, :symptom)
+    params.require(:consultation).permit(:email, :status, :name, :age, :gender, :symptom_id, :questionsandanswer_1, :questionsandanswer_2, :questionsandanswer_3, :questionsandanswer_4, :questionsandanswer_5)
   end
 end
