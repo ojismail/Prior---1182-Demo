@@ -4,10 +4,10 @@
 <% if current_user.doctor? %>
   <p>Welcome, Doctor! Below is the Consultation Summary:</p>
 
-<p><strong>User:</strong> <%= @consultation.user_id %></p>
-<p><strong>Symptom:</strong> <%= @consultation.symptom_id %></p>
+<p><strong>Patient:</strong> <%= @consultation.user_id %></p>
+<p><strong>Symptom:</strong> <%= @consultation.symptom.name %></p>
 
-<h3>Questions and Answers</h3>
+<h3>Patient Input</h3>
 <ul>
   <li><strong><%= @consultation.symptom.question_1 %>:</strong> <%= @consultation.questionsandanswer_1 %></li>
   <li><strong><%= @consultation.symptom.question_2 %>:</strong> <%= @consultation.questionsandanswer_2 %></li>
@@ -16,7 +16,6 @@
   <li><strong><%= @consultation.symptom.question_5 %>:</strong> <%= @consultation.questionsandanswer_5 %></li>
 </ul>
 
-<h3>GPT Response</h3>
 <% gpt_response_parts = @consultation.gpt_response.split("\n\n") %>
 <% gpt_response_parts.each do |part| %>
   <% title, *items = part.split("\n") %>
@@ -33,6 +32,8 @@
 
 
   <p>Welcome, Patient! Below is your Consultation Summary:</p>
+
+<p><strong>Symptom:</strong> <%= @consultation.symptom.name %></p>
 
 <h3>Questions and Answers</h3>
 <ul>
