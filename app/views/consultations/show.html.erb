@@ -1,16 +1,8 @@
-<% if current_user.doctor? %>
-  <p>Welcome, Doctor! Below is the consultation/show.</p>
-
-
-<% else %>
-
-
-  <p>Welcome, Patient! Below is consultation/show.</p>
-
-<% end %>
-
 
 <h1>Consultation</h1>
+
+<% if current_user.doctor? %>
+  <p>Welcome, Doctor! Below is the Consultation Summary:</p>
 
 <p><strong>User:</strong> <%= @consultation.user_id %></p>
 <p><strong>Symptom:</strong> <%= @consultation.symptom_id %></p>
@@ -35,6 +27,25 @@
     <% end %>
   </ul>
 <% end %>
+
+
+<% else %>
+
+
+  <p>Welcome, Patient! Below is your Consultation Summary:</p>
+
+<h3>Questions and Answers</h3>
+<ul>
+  <li><strong><%= @consultation.symptom.question_1 %>:</strong> <%= @consultation.questionsandanswer_1 %></li>
+  <li><strong><%= @consultation.symptom.question_2 %>:</strong> <%= @consultation.questionsandanswer_2 %></li>
+  <li><strong><%= @consultation.symptom.question_3 %>:</strong> <%= @consultation.questionsandanswer_3 %></li>
+  <li><strong><%= @consultation.symptom.question_4 %>:</strong> <%= @consultation.questionsandanswer_4 %></li>
+  <li><strong><%= @consultation.symptom.question_5 %>:</strong> <%= @consultation.questionsandanswer_5 %></li>
+</ul>
+
+
+<% end %>
+
 
 <%= link_to 'Edit', edit_consultation_path(@consultation) %> |
 <%= link_to 'Back', consultations_path %>
