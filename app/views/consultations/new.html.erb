@@ -3,13 +3,14 @@
     <% if current_user.doctor? %>
       <p class="card-text">Welcome, Doctor! You cannot create a consultation.</p>
     <% else %>
-      <p class="card-text">Welcome, Patient! Please select your symptom to begin a consultation.</p>
+      <p class="card-text">Welcome, Patient! Please select your symptom to begin a consultation:</p>
       <% @symptoms.each do |symptom| %>
         <%= simple_form_for @consultation, data: { turbo: false } do |f| %>
           <div class="form-group d-grid gap-2">
             <button style="width: 50%" type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#symptom-<%= symptom.id %>">
               <%= symptom.name %>
             </button>
+            <br>
             <div class="modal fade" id="symptom-<%= symptom.id %>" tabindex="-1" role="dialog" aria-labelledby="symptom-<%= symptom.id %>-label" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
