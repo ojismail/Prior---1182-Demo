@@ -67,13 +67,23 @@ class ConsultationsController < ApplicationController
   private
 
   def consultation_params
-    params.require(:consultation).permit(:email, :status, :name, :age, :gender, :symptom_id, :questionsandanswer_1, :questionsandanswer_2, :questionsandanswer_3, :questionsandanswer_4, :questionsandanswer_5)
+    params.require(:consultation).permit(:gpt_prompt, :gpt_response, :email, :status, :name, :age, :gender, :symptom_id, :questionsandanswer_1, :questionsandanswer_2, :questionsandanswer_3, :questionsandanswer_4, :questionsandanswer_5)
   end
 
   def generate_gpt_prompt_and_response(consultation)
-    # Generate the prompt based on the consultation data
-    prompt = "Consultation ID: #{consultation.id}, Symptom: #{consultation.symptom_id}, Questions and Answers: #{consultation.questionsandanswer_1}, #{consultation.questionsandanswer_2}, #{consultation.questionsandanswer_3}, #{consultation.questionsandanswer_4}, #{consultation.questionsandanswer_5}. Please provide: 1) A Clinical Summary of the information provided that is suitable to entered into the patient notes. 2) A list of 5 differentials for the symptoms bearing in mind the patient's background. 3) A related managment plan."
-
+    # Generate the prompt based on the consultation data and additional instructions
+    prompt = <<-PROMPT
+    Instructions: We are going to give you some information a patient has provided about their symptoms in a question and answer format below.
+    Please respond with a list of 5 possible cause of the symptoms and a management plan for the patient.
+    Consultation ID: #{consultation.id}
+    Symptom: #{consultation.symptom_id}
+    Questions and Answers:
+    #{consultation.questionsandanswer_1}
+    #{consultation.questionsandanswer_2}
+    #{consultation.questionsandanswer_3}
+    #{consultation.questionsandanswer_4}
+    #{consultation.questionsandanswer_5}
+    PROMPT
     # Send the prompt to the GPT-3 API
     response = send_gpt_request(prompt)
 
@@ -83,12 +93,12 @@ class ConsultationsController < ApplicationController
 
   def send_gpt_request(prompt)
     client = OpenAI::Client.new
-          response = client.completions(
-        parameters: {
-        model: "text-davinci-001",
-        prompt: "Q/A + template",
-        max_tokens: 5
-        })
+        response = client.completions(
+          parameters: {
+          model: "text-davinci-003",
+          prompt: prompt,
+          max_tokens: 150
+          })
 
     # Extract the response content
     response['choices'][0]['text'].strip

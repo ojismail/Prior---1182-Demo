@@ -1,16 +1,19 @@
 <% if current_user.doctor? %>
   <p>Welcome, Doctor! Below is the consultation/show.</p>
-  <p>Welcome, Doctor! Below is the consultation/show.</p>
+
+
 <% else %>
+
+
   <p>Welcome, Patient! Below is consultation/show.</p>
+
 <% end %>
+
+
 <h1>Consultation</h1>
-<%# <p><strong>Status:</strong> <%= @consultation.status %></p>
+
 <p><strong>User:</strong> <%= @consultation.user_id %></p>
 <p><strong>Symptom:</strong> <%= @consultation.symptom_id %></p>
-<%# <p><strong>Question and Answer:</strong> <%= @consultation.questionandanswer_id %></p>
-<%# <p><strong>GPT Prompt:</strong> <%= @consultation.gpt_prompt %>
-<%# <p><strong>GPT Response:</strong> <%= @consultation.gpt_response %></p>
 
 <h3>Questions and Answers</h3>
 <ul>
@@ -20,6 +23,18 @@
   <li><strong><%= @consultation.symptom.question_4 %>:</strong> <%= @consultation.questionsandanswer_4 %></li>
   <li><strong><%= @consultation.symptom.question_5 %>:</strong> <%= @consultation.questionsandanswer_5 %></li>
 </ul>
+
+<h3>GPT Response</h3>
+<% gpt_response_parts = @consultation.gpt_response.split("\n\n") %>
+<% gpt_response_parts.each do |part| %>
+  <% title, *items = part.split("\n") %>
+  <h4><%= title %></h4>
+  <ul>
+    <% items.each do |item| %>
+      <li><%= item %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= link_to 'Edit', edit_consultation_path(@consultation) %> |
 <%= link_to 'Back', consultations_path %>
