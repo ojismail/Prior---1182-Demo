@@ -70,9 +70,21 @@ class ConsultationsController < ApplicationController
   end
 
   def generate_gpt_prompt_and_response(consultation)
-    # Generate the prompt based on the consultation data
-    prompt = "Consultation ID: #{consultation.id}, Symptom: #{consultation.symptom_id}, Questions and Answers: #{consultation.questionsandanswer_1}, #{consultation.questionsandanswer_2}, #{consultation.questionsandanswer_3}, #{consultation.questionsandanswer_4}, #{consultation.questionsandanswer_5}. Please provide: 1) A Clinical Summary of the information provided that is suitable to entered into the patient notes. 2) A list of 5 differentials for the symptoms bearing in mind the patient's background. 3) A related managment plan."
-
+    # Generate the prompt based on the consultation data and additional instructions
+    prompt = <<-PROMPT
+    I'm going to give you a list of questions and answers a patient has provided me.
+    Please provide a clinical summary of the information provided that is suitable to be entered into the patient notes.
+    Please also provide me with a list of 5 differentials for the symptoms bearing in mind the patient's background.
+    Please also provide me with a related management plan.
+    Consultation ID: #{consultation.id}
+    Symptom: #{consultation.symptom_id}
+    Questions and Answers:
+    #{consultation.questionsandanswer_1}
+    #{consultation.questionsandanswer_2}
+    #{consultation.questionsandanswer_3}
+    #{consultation.questionsandanswer_4}
+    #{consultation.questionsandanswer_5}
+    PROMPT
     # Send the prompt to the GPT-3 API
     response = send_gpt_request(prompt)
 
@@ -82,11 +94,11 @@ class ConsultationsController < ApplicationController
 
   def send_gpt_request(prompt)
     client = OpenAI::Client.new
-          response = client.completions(
+        response = client.completions(
         parameters: {
-        model: "text-davinci-001",
-        prompt: "Q/A + template",
-        max_tokens: 5
+        model: "text-davinci-003",
+        prompt: prompt,
+        max_tokens: 300
         })
 
     # Extract the response content
