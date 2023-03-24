@@ -1,31 +1,63 @@
+<div class="container mt-4">
+  <% if current_user.doctor? %>
+    <div class="card">
+      <div class="card-header">
+        <h4 class="mb-0">Consultation Summary</h4>
+      </div>
+      <div class="card-body">
+        <p class="card-text"><strong>Patient:</strong> <%= @consultation.user_id %></p>
+        <p class="card-text"><strong>Symptom:</strong> <%= @consultation.symptom.name %></p>
 
-<h1>Consultation</h1>
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0">Patient Input</h5>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <th><%= @consultation.symptom.question_1 %></th>
+                  <td><%= @consultation.questionsandanswer_1 %></td>
+                </tr>
+                <tr>
+                  <th><%= @consultation.symptom.question_2 %></th>
+                  <td><%= @consultation.questionsandanswer_2 %></td>
+                </tr>
+                <tr>
+                  <th><%= @consultation.symptom.question_3 %></th>
+                  <td><%= @consultation.questionsandanswer_3 %></td>
+                </tr>
+                <tr>
+                  <th><%= @consultation.symptom.question_4 %></th>
+                  <td><%= @consultation.questionsandanswer_4 %></td>
+                </tr>
+                <tr>
+                  <th><%= @consultation.symptom.question_5 %></th>
+                  <td><%= @consultation.questionsandanswer_5 %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-<% if current_user.doctor? %>
-  <p>Welcome, Doctor! Below is the Consultation Summary:</p>
-
-<p><strong>Patient:</strong> <%= @consultation.user_id %></p>
-<p><strong>Symptom:</strong> <%= @consultation.symptom.name %></p>
-
-<h3>Patient Input</h3>
-<ul>
-  <li><strong><%= @consultation.symptom.question_1 %>:</strong> <%= @consultation.questionsandanswer_1 %></li>
-  <li><strong><%= @consultation.symptom.question_2 %>:</strong> <%= @consultation.questionsandanswer_2 %></li>
-  <li><strong><%= @consultation.symptom.question_3 %>:</strong> <%= @consultation.questionsandanswer_3 %></li>
-  <li><strong><%= @consultation.symptom.question_4 %>:</strong> <%= @consultation.questionsandanswer_4 %></li>
-  <li><strong><%= @consultation.symptom.question_5 %>:</strong> <%= @consultation.questionsandanswer_5 %></li>
-</ul>
-
-<% gpt_response_parts = @consultation.gpt_response.split("\n\n") %>
-<% gpt_response_parts.each do |part| %>
-  <% title, *items = part.split("\n") %>
-  <h4><%= title %></h4>
-  <ul>
-    <% items.each do |item| %>
-      <li><%= item %></li>
-    <% end %>
-  </ul>
-<% end %>
+        <% gpt_response_parts = @consultation.gpt_response.split("\n\n") %>
+        <% gpt_response_parts.each do |part| %>
+          <% title, *items = part.split("\n") %>
+          <div class="card mt-4">
+            <div class="card-header">
+              <h5 class="mb-0"><%= title %></h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled mb-0">
+                <% items.each do |item| %>
+                  <li><%= item %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
 
 <% else %>
