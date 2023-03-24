@@ -22,6 +22,7 @@ class ConsultationsController < ApplicationController
 
 
     if @consultation.save
+      generate_gpt_prompt_and_response(@consultation)
       redirect_to consultations_path, notice: 'Consultation was successfully created.'
     else
       @symptoms = Symptom.all
@@ -66,5 +67,29 @@ class ConsultationsController < ApplicationController
 
   def consultation_params
     params.require(:consultation).permit(:email, :status, :name, :age, :gender, :symptom_id, :questionsandanswer_1, :questionsandanswer_2, :questionsandanswer_3, :questionsandanswer_4, :questionsandanswer_5)
+  end
+
+  def generate_gpt_prompt_and_response(consultation)
+    # Generate the prompt based on the consultation data
+    prompt = "Consultation ID: #{consultation.id}, Symptom: #{consultation.symptom_id}, Questions and Answers: #{consultation.questionsandanswer_1}, #{consultation.questionsandanswer_2}, #{consultation.questionsandanswer_3}, #{consultation.questionsandanswer_4}, #{consultation.questionsandanswer_5}. Please provide: 1) A Clinical Summary of the information provided that is suitable to entered into the patient notes. 2) A list of 5 differentials for the symptoms bearing in mind the patient's background. 3) A related managment plan."
+
+    # Send the prompt to the GPT-3 API
+    response = send_gpt_request(prompt)
+
+    # Update the consultation record with the GPT response
+    consultation.update(gpt_prompt: prompt, gpt_response: response)
+  end
+
+  def send_gpt_request(prompt)
+    client = OpenAI::Client.new
+          response = client.completions(
+        parameters: {
+        model: "text-davinci-001",
+        prompt: "Q/A + template",
+        max_tokens: 5
+        })
+
+    # Extract the response content
+    response['choices'][0]['text'].strip
   end
 end
