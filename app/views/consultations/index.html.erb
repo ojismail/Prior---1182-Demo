@@ -5,15 +5,17 @@
     <li>
       <%= link_to consultation.symptom.name, consultation_path(consultation), title: consultation.symptom.name %>
       <br>
-      <strong>Symptom:</strong> <%= consultation.symptom_id %>
-      <br>
       <strong>Patient ID:</strong> <%= consultation.user_id %>
       <br>
       <strong>Age:</strong> <%= consultation.user.age %>
       <br>
       <strong>Gender:</strong> <%= consultation.user.gender %>
       <br>
+      <strong>Symptom:</strong> <%= consultation.symptom.name %>
+      <br>
       <%= button_to 'Destroy', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <br>
+          <br>
     </li>
       <% end %>
 
@@ -26,13 +28,8 @@
     <li>
       <%= link_to consultation.symptom.name, consultation_path(consultation), title: consultation.symptom.name %>
       <br>
-      <strong>Symptom:</strong> <%= consultation.symptom_id %>
+      <strong>Symptom:</strong> <%= consultation.symptom.name%>
       <br>
-      <strong>Patient ID:</strong> <%= consultation.user_id %>
-      <br>
-      <strong>Age:</strong> <%= consultation.user.age %>
-      <br>
-      <strong>Gender:</strong> <%= consultation.user.gender %>
       <br>
       <%= button_to 'Destroy', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
     </li>
