@@ -1,7 +1,5 @@
 <% if current_user.doctor? %>
-  <p>Welcome, Doctor! Below are your list of consultations.</p>
-
-  <h1>All Consultations</h1>
+  <p>Welcome, Doctor! Below is a list of Consultations:</p>
 
   <% @consultations.each do |consultation| %>
     <li>
@@ -20,10 +18,8 @@
       <% end %>
 
 <% else %>
-  <p>Welcome, Patient! These are your consultations.</p>
+  <p>Welcome, Patient! Below is a list of your Consultations: </p>
 <% end %>
-
-<h1>Patient Consultations</h1>
 
 <ul>
   <% @consultations_user.each do |consultation| %>

@@ -8,4 +8,9 @@ class User < ApplicationRecord
   enum role: [:patient, :doctor]
   scope :doctors, -> { where(role: 'doctor') }
   scope :patients, -> { where(role: 'patient') }
+
+  def role=(value)
+    super(value.to_i)
+  end
+
 end

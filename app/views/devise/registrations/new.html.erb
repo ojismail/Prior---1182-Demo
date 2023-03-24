@@ -19,7 +19,7 @@
     <%= f.input :medical_history, label: 'Medical History' %>
     <%= f.input :drug_history, label: 'Drug History' %>
     <%= f.input :allergy_history, label: 'Allergy History' %>
-    <%= f.input :role, as: :radio_buttons, collection: [['Patient', 'patient'], ['Doctor', 'doctor']], label: 'Role' %>
+    <%= f.input :role, as: :radio_buttons, collection: [['Patient', 0], ['Doctor', 1]], label: 'Role' %>
   </div>
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>

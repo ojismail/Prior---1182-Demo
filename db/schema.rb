@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_23_133055) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_24_113638) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_133055) do
     t.string "drug_history"
     t.string "allergy_history"
     t.string "password"
-    t.string "role"
+    t.integer "role"
     t.string "encrypted_password"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at", precision: nil
