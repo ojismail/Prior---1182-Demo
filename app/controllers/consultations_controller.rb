@@ -73,8 +73,10 @@ class ConsultationsController < ApplicationController
   def generate_gpt_prompt_and_response(consultation)
     # Generate the prompt based on the consultation data and additional instructions
     prompt = <<-PROMPT
-    Instructions: We are going to give you some information a patient has provided about their symptoms in a question and answer format below.
-    Please respond with a list of 5 possible cause of the symptoms and a management plan for the patient.
+    I'm going to give you a list of questions and answers a patient has provided me.
+    Please provide a clinical summary of the information provided that is suitable to be entered into the patient notes.
+    Please also provide me with a list of 5 differentials for the symptoms bearing in mind the patient's background.
+    Please also provide me with a related management plan.
     Consultation ID: #{consultation.id}
     Symptom: #{consultation.symptom_id}
     Questions and Answers:
@@ -94,11 +96,12 @@ class ConsultationsController < ApplicationController
   def send_gpt_request(prompt)
     client = OpenAI::Client.new
         response = client.completions(
-          parameters: {
-          model: "text-davinci-003",
-          prompt: prompt,
-          max_tokens: 150
-          })
+        parameters: {
+        model: "text-davinci-003",
+        prompt: prompt,
+        max_tokens: 300
+        })
+
 
     # Extract the response content
     response['choices'][0]['text'].strip
