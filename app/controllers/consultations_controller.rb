@@ -80,14 +80,12 @@ class ConsultationsController < ApplicationController
 
   def send_gpt_request(prompt)
     client = OpenAI::Client.new
-    response = client.create_completion(
-      engine: "gpt-3.5-turbo",
-      prompt: prompt,
-      max_tokens: 150,
-      n: 1,
-      stop: nil,
-      temperature: 0.7,
-    )
+          response = client.completions(
+        parameters: {
+        model: "text-davinci-001",
+        prompt: "Q/A + template",
+        max_tokens: 5
+        })
 
     # Extract the response content
     response['choices'][0]['text'].strip
