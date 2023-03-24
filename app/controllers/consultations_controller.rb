@@ -5,6 +5,7 @@ class ConsultationsController < ApplicationController
 
   def index
     @consultations = Consultation.all
+    @consultations_user = current_user.consultations
   end
 
   def show
@@ -66,7 +67,7 @@ class ConsultationsController < ApplicationController
   private
 
   def consultation_params
-    params.require(:consultation).permit(:email, :status, :name, :age, :gender, :symptom_id, :questionsandanswer_1, :questionsandanswer_2, :questionsandanswer_3, :questionsandanswer_4, :questionsandanswer_5)
+    params.require(:consultation).permit(:gpt_prompt, :gpt_response, :email, :status, :name, :age, :gender, :symptom_id, :questionsandanswer_1, :questionsandanswer_2, :questionsandanswer_3, :questionsandanswer_4, :questionsandanswer_5)
   end
 
   def generate_gpt_prompt_and_response(consultation)
@@ -100,6 +101,7 @@ class ConsultationsController < ApplicationController
         prompt: prompt,
         max_tokens: 300
         })
+
 
     # Extract the response content
     response['choices'][0]['text'].strip
