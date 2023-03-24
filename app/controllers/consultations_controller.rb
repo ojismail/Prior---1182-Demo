@@ -5,6 +5,7 @@ class ConsultationsController < ApplicationController
 
   def index
     @consultations = Consultation.all
+    @consultations_user = current_user.consultations
   end
 
   def show

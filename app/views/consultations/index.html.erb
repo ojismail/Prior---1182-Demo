@@ -1,14 +1,32 @@
 <% if current_user.doctor? %>
   <p>Welcome, Doctor! Below are your list of consultations.</p>
 
+  <h1>All Consultations</h1>
+
+  <% @consultations.each do |consultation| %>
+    <li>
+      <%= link_to consultation.symptom.name, consultation_path(consultation), title: consultation.symptom.name %>
+      <br>
+      <strong>Symptom:</strong> <%= consultation.symptom_id %>
+      <br>
+      <strong>Patient ID:</strong> <%= consultation.user_id %>
+      <br>
+      <strong>Age:</strong> <%= consultation.user.age %>
+      <br>
+      <strong>Gender:</strong> <%= consultation.user.gender %>
+      <br>
+      <%= button_to 'Destroy', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    </li>
+      <% end %>
+
 <% else %>
   <p>Welcome, Patient! These are your consultations.</p>
 <% end %>
 
-<h1>All Consultations</h1>
+<h1>Patient Consultations</h1>
 
 <ul>
-  <% @consultations.each do |consultation| %>
+  <% @consultations_user.each do |consultation| %>
     <li>
       <%= link_to consultation.symptom.name, consultation_path(consultation), title: consultation.symptom.name %>
       <br>
