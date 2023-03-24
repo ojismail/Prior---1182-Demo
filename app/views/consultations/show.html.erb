@@ -63,18 +63,64 @@
 <% else %>
 
 
-  <p>Welcome, Patient! Below is your Consultation Summary:</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Consultation Summary</h2>
+      <hr>
+    </div>
+  </div>
 
-<p><strong>Symptom:</strong> <%= @consultation.symptom.name %></p>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td><strong>Symptom:</strong></td>
+            <td><%= @consultation.symptom.name %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-<h3>Questions and Answers</h3>
-<ul>
-  <li><strong><%= @consultation.symptom.question_1 %>:</strong> <%= @consultation.questionsandanswer_1 %></li>
-  <li><strong><%= @consultation.symptom.question_2 %>:</strong> <%= @consultation.questionsandanswer_2 %></li>
-  <li><strong><%= @consultation.symptom.question_3 %>:</strong> <%= @consultation.questionsandanswer_3 %></li>
-  <li><strong><%= @consultation.symptom.question_4 %>:</strong> <%= @consultation.questionsandanswer_4 %></li>
-  <li><strong><%= @consultation.symptom.question_5 %>:</strong> <%= @consultation.questionsandanswer_5 %></li>
-</ul>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Questions and Answers</h3>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td><strong><%= @consultation.symptom.question_1 %>:</strong></td>
+            <td><%= @consultation.questionsandanswer_1 %></td>
+          </tr>
+          <tr>
+            <td><strong><%= @consultation.symptom.question_2 %>:</strong></td>
+            <td><%= @consultation.questionsandanswer_2 %></td>
+          </tr>
+          <tr>
+            <td><strong><%= @consultation.symptom.question_3 %>:</strong></td>
+            <td><%= @consultation.questionsandanswer_3 %></td>
+          </tr>
+          <tr>
+            <td><strong><%= @consultation.symptom.question_4 %>:</strong></td>
+            <td><%= @consultation.questionsandanswer_4 %></td>
+          </tr>
+          <tr>
+            <td><strong><%= @consultation.symptom.question_5 %>:</strong></td>
+            <td><%= @consultation.questionsandanswer_5 %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 
 
 <% end %>

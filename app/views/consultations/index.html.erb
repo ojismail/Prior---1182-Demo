@@ -4,6 +4,7 @@
     <table class="table table-hover">
       <thead>
         <tr>
+          <th>Open</th>
           <th>Symptom</th>
           <th>Patient ID</th>
           <th>Age</th>
@@ -14,7 +15,8 @@
       <tbody>
         <% @consultations.each do |consultation| %>
           <tr>
-            <td><%= link_to consultation.symptom.name, consultation_path(consultation), title: consultation.symptom.name %></td>
+            <td><%= button_to 'Open', consultation_path(consultation), method: :get, class: 'btn btn-success' %></td>
+            <td><%= consultation.symptom.name %></td>
             <td><%= consultation.user_id %></td>
             <td><%= consultation.user.age %></td>
             <td><%= consultation.user.gender %></td>
@@ -30,6 +32,7 @@
     <table class="table table-hover">
       <thead>
         <tr>
+          <th>Open</th>
           <th>Symptom</th>
           <th>Action</th>
         </tr>
@@ -37,7 +40,8 @@
       <tbody>
         <% @consultations_user.each do |consultation| %>
           <tr>
-            <td><%= link_to consultation.symptom.name, consultation_path(consultation), title: consultation.symptom.name %></td>
+            <td><%= button_to 'Open', consultation_path(consultation), method: :get, class: 'btn btn-success' %></td>
+            <td><%= consultation.symptom.name %></td>
             <td><%= button_to 'Destroy', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>
