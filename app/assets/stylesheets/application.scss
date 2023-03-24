@@ -10,3 +10,14 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.nav-link-form {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-link-form .btn.btn-link.nav-link {
+  padding: 0.5rem 1rem;
+  margin: 0;
+}
