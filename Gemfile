@@ -77,3 +77,5 @@ group :test do
   gem "webdrivers"
 end
 gem "ruby-openai"
+
+gem "tailwindcss-rails", "~> 2.0"
