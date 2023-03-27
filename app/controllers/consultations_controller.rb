@@ -67,24 +67,29 @@ class ConsultationsController < ApplicationController
   private
 
   def consultation_params
-    params.require(:consultation).permit(:gpt_prompt, :gpt_response, :email, :status, :name, :age, :gender, :symptom_id, :questionsandanswer_1, :questionsandanswer_2, :questionsandanswer_3, :questionsandanswer_4, :questionsandanswer_5)
+    params.require(:consultation).permit(:gpt_prompt, :gpt_response, :email, :status, :name, :age, :gender, :symptom_id, :questionsandanswer_1, :questionsandanswer_2, :questionsandanswer_3, :questionsandanswer_4, :questionsandanswer_5, :questionsandanswer_6, :questionsandanswer_7)
   end
 
   def generate_gpt_prompt_and_response(consultation)
     # Generate the prompt based on the consultation data and additional instructions
     prompt = <<-PROMPT
-    I'm going to give you a list of questions and answers a patient has provided me.
-    Please provide a clinical summary of the information provided that is suitable to be entered into the patient notes.
+    I'm going to give you a list of questions and answers a patient has provided me alongside some background information.
+    Pretend you are a medical intern and five sentence clinical summary of the patient's age and gender and information provided about their symptoms that is suitable to be entered into the patient notes.
     Please also provide me with a list of 5 differentials for the symptoms bearing in mind the patient's background.
-    Please also provide me with a related management plan.
-    Consultation ID: #{consultation.id}
-    Symptom: #{consultation.symptom_id}
+    Please also provide me with a numbered management plan based on the differentials.
+    Presenting Complaint: #{consultation.symptom_id}
+    Age: #{consultation.user.age}
+    Gender: #{consultation.user.gender}
+    Past Medical History: #{consultation.user.medical_history}
+    Drug History: #{consultation.user.drug_history}
     Questions and Answers:
     #{consultation.questionsandanswer_1}
     #{consultation.questionsandanswer_2}
     #{consultation.questionsandanswer_3}
     #{consultation.questionsandanswer_4}
     #{consultation.questionsandanswer_5}
+    #{consultation.questionsandanswer_6}
+    #{consultation.questionsandanswer_7}
     PROMPT
     # Send the prompt to the GPT-3 API
     response = send_gpt_request(prompt)
@@ -99,7 +104,7 @@ class ConsultationsController < ApplicationController
         parameters: {
         model: "text-davinci-003",
         prompt: prompt,
-        max_tokens: 300
+        max_tokens: 400
         })
 
 

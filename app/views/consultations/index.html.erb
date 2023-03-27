@@ -20,7 +20,7 @@
             <td><%= consultation.user_id %></td>
             <td><%= consultation.user.age %></td>
             <td><%= consultation.user.gender %></td>
-            <td><%= button_to 'Destroy', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+            <td><%= button_to 'Delete', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>
       </tbody>
@@ -42,7 +42,7 @@
           <tr>
             <td><%= button_to 'Open', consultation_path(consultation), method: :get, class: 'btn btn-success' %></td>
             <td><%= consultation.symptom.name %></td>
-            <td><%= button_to 'Destroy', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+            <td><%= button_to 'Delete', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>
       </tbody>

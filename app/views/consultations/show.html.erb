@@ -5,8 +5,13 @@
         <h4 class="mb-0">Consultation Summary</h4>
       </div>
       <div class="card-body">
-        <p class="card-text"><strong>Patient:</strong> <%= @consultation.user_id %></p>
-        <p class="card-text"><strong>Symptom:</strong> <%= @consultation.symptom.name %></p>
+       <p class="card-text"><strong>Patient ID:</strong> <%= @consultation.user_id %></p>
+       <p class="card-text"><strong>Symptom:</strong> <%= @consultation.symptom.name %></p>
+       <p class="card-text"><strong>Age:</strong> <%= @consultation.user.age %></p>
+       <p class="card-text"><strong>Gender:</strong> <%= @consultation.user.gender %></p>
+       <p class="card-text"><strong>Past Medical History:</strong> <%= @consultation.user.medical_history%></p>
+       <p class="card-text"><strong>Drug History:</strong> <%= @consultation.user.drug_history %></p>
+       <p class="card-text"><strong>Allergies:</strong> <%= @consultation.user.allergy_history %></p>
 
         <div class="card">
           <div class="card-header">
@@ -34,6 +39,14 @@
                 <tr>
                   <th><%= @consultation.symptom.question_5 %></th>
                   <td><%= @consultation.questionsandanswer_5 %></td>
+                </tr>
+                <tr>
+                  <th><%= @consultation.symptom.question_6 %></th>
+                  <td><%= @consultation.questionsandanswer_6 %></td>
+                </tr>
+                <tr>
+                  <th><%= @consultation.symptom.question_7 %></th>
+                  <td><%= @consultation.questionsandanswer_7 %></td>
                 </tr>
               </tbody>
             </table>
@@ -114,6 +127,14 @@
           <tr>
             <td><strong><%= @consultation.symptom.question_5 %>:</strong></td>
             <td><%= @consultation.questionsandanswer_5 %></td>
+          </tr>
+           <tr>
+            <td><strong><%= @consultation.symptom.question_6 %>:</strong></td>
+            <td><%= @consultation.questionsandanswer_6 %></td>
+          </tr>
+           <tr>
+            <td><strong><%= @consultation.symptom.question_7 %>:</strong></td>
+            <td><%= @consultation.questionsandanswer_7 %></td>
           </tr>
         </tbody>
       </table>

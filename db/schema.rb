@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_24_113638) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_27_083900) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_113638) do
     t.string "questionsandanswer_3"
     t.string "questionsandanswer_4"
     t.string "questionsandanswer_5"
+    t.string "questionsandanswer_6"
+    t.string "questionsandanswer_7"
     t.index ["symptom_id"], name: "index_consultations_on_symptom_id"
     t.index ["user_id"], name: "index_consultations_on_user_id"
   end
@@ -42,6 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_113638) do
     t.string "question_3"
     t.string "question_4"
     t.string "question_5"
+    t.string "question_6"
+    t.string "question_7"
   end
 
   create_table "users", force: :cascade do |t|
