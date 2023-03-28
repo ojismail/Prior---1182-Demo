@@ -14,14 +14,15 @@ class ConsultationsController < ApplicationController
 
   def new
     @consultation = Consultation.new
-    @symptoms = Symptom.all
+    if params[:search].present?
+      @symptoms = Symptom.where('name ILIKE ?', "%#{params[:search]}%")
+    else
+      @symptoms = Symptom.all
+    end
   end
 
   def create
     @consultation = current_user.consultations.build(consultation_params)
-
-
-
     if @consultation.save
       generate_gpt_prompt_and_response(@consultation)
       redirect_to consultations_path, notice: 'Consultation was successfully created.'
