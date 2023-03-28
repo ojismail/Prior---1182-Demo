@@ -75,12 +75,10 @@ class ConsultationsController < ApplicationController
     prompt = <<-PROMPT
     I'm going to give you a list of questions and answers a patient has provided me alongside some background information.
     Pretend you are a doctor and provide:
-    1. A Severity Score: 1-5
-    2. Clinical Summary: A three sentence clinical summary of their symptoms (make sure to include patient's age and gender).
-    3. Differential Diagnoses: 5 differentials for the symptoms bearing in mind the patient's background.
-    4. Management Plan: 5 investigation or management actions based on the differentials.
-    5. Follow Up: A follow up plan for the patient.
-    6. Learning Point: A medical learning point about the likely differential diagnosis. Make it complex.
+    1. Clinical Summary: A three sentence clinical summary of their symptoms (make sure to include patient's age and gender).
+    2. Differential Diagnoses: 5 differentials for the symptoms bearing in mind the patient's background.
+    3. Management Plan: 5 investigation or management actions based on the differentials.
+    4. Learning Point: A medical learning point about the case. Make it complex.
     Presenting Complaint: #{consultation.symptom_id}
     Age: #{consultation.user.age}
     Gender: #{consultation.user.gender}
