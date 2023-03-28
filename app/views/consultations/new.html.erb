@@ -4,6 +4,16 @@
       <p class="card-text">Welcome, Doctor! You cannot create a consultation.</p>
     <% else %>
       <p class="card-text">Welcome, Patient! Please select your symptom to begin a consultation:</p>
+       <%= form_tag new_consultation_path, method: :get, class: "flex items-center mb-4" do %>
+      <div class="flex items-center bg-white rounded-lg border-2 border-gray-200">
+        <%= text_field_tag :search, params[:search], placeholder: "Search for your symptom...", class: "py-2 px-4 rounded-l-lg focus:outline-none" %>
+        <div class="p-2">
+          <%= button_tag type: :submit, class: "bg-blue-500 text-white rounded-r-lg hover:bg-blue-400 focus:outline-none" do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
       <% @symptoms.order(:name).each do |symptom| %>
         <%= simple_form_for @consultation, data: { turbo: false } do |f| %>
           <div class="form-group d-grid gap-2">
@@ -63,4 +73,4 @@
   </div>
 </div>
 
-<%= link_to 'Back to consultations', consultations_path, class: 'btn btn-outline-danger' %>
+<%= button_to 'Back', consultations_path, class: 'btn btn-outline-danger' %>
