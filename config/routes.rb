@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :consultations
+  resources :consultations do
+    patch :close, on: :member
+    # other routes, if any...
+  end
   # get 'consultations/new', to: 'consultations#new', as: 'new_consultation'
   # post 'consultations', to: 'consultations#create'
   # get 'consultations/:id/edit', to: 'consultations#edit', as: 'edit_consultation'

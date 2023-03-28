@@ -26,6 +26,7 @@
                 <% if current_user.doctor? %>
                   <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Status</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Symptom</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Rating</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Patient ID</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Age</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Gender</th>
@@ -43,11 +44,14 @@
     <% @consultations.each do |consultation| %>
       <tr class="hover:bg-gray-100">
         <td class="px-6 py-4 whitespace-nowrap">
-          <%= button_to 'Open', consultation_path(consultation), method: :get, class: 'px-3 py-1 text-sm font-medium text-green-600 rounded-md border border-green-600 hover:text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500' %>
+        <%= consultation.status %>
         </td>
         <td class="px-6 py-4 whitespace-nowrap">
           <%= consultation.symptom.name %>
         </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+        <%= consultation.rating %>
+      </td>
         <td class="px-6 py-4 whitespace-nowrap">
           <%= consultation.user_id %>
         </td>
@@ -58,22 +62,24 @@
           <%= consultation.user.gender %>
         </td>
         <td class="px-6 py-4 whitespace-nowrap">
-          <%= button_to 'Delete', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'px-3 py-1 text-sm font-medium text-red-600 rounded-md border border-red-600 hover:text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500' %>
-        </td>
+        <%= button_to 'Open', consultation_path(consultation), method: :get, class: 'px-3 py-1 text-sm font-medium text-green-600 rounded-md border border-green-600 hover:text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mr-2' %>
+        <%= button_to 'Delete', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'px-3 py-1 text-sm font-medium text-red-600 rounded-md border border-red-600 hover:text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500' %>
+      </td>
       </tr>
     <% end %>
   <% else %>
     <% @consultations_user.each do |consultation| %>
       <tr class="hover:bg-gray-100">
-        <td class="px-6 py-4 whitespace-nowrap">
-          <%= button_to 'Open', consultation_path(consultation), method: :get, class: 'px-3 py-1 text-sm font-medium text-green-600 rounded-md border border-green-600 hover:text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500' %>
+      <td class="px-6 py-4 whitespace-nowrap">
+        <%= consultation.status %>
         </td>
         <td class="px-6 py-4 whitespace-nowrap">
           <%= consultation.symptom.name %>
         </td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <%= button_to 'Delete', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'px-3 py-1 text-sm font-medium text-red-600 rounded-md border border-red-600 hover:text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500' %>
-        </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+        <%= button_to 'Open', consultation_path(consultation), method: :get, class: 'px-3 py-1 text-sm font-medium text-green-600 rounded-md border border-green-600 hover:text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mr-2' %>
+        <%= button_to 'Delete', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'px-3 py-1 text-sm font-medium text-red-600 rounded-md border border-red-600 hover:text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500' %>
+      </td>
       </tr>
     <% end %>
   <% end %>

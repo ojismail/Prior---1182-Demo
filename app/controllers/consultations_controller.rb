@@ -48,7 +48,7 @@ class ConsultationsController < ApplicationController
 
   def close
     @consultation = Consultation.find(params[:id])
-    @consultation.closed = true
+    @consultation.status = 'Closed'
     @consultation.save
     redirect_to consultations_path, notice: 'Consultation was successfully closed.'
   end
@@ -57,7 +57,7 @@ class ConsultationsController < ApplicationController
   def destroy
     @consultation = Consultation.find(params[:id])
     @consultation.destroy
-    redirect_to consultation_url, notice: "Consultation was successfully destroyed."
+    redirect_to consultations_path, notice: "Consultation was successfully deleted."
   end
 
   def create_prompt
@@ -74,11 +74,13 @@ class ConsultationsController < ApplicationController
     # Generate the prompt based on the consultation data and additional instructions
     prompt = <<-PROMPT
     I'm going to give you a list of questions and answers a patient has provided me alongside some background information.
-    1. Pretend you are a medical consultant and provide a five sentence clinical summary of the patient's age and gender and information provided about their symptoms that is suitable to be entered into the patient notes.
-    2. Please also provide me with a list of 5 differentials for the symptoms bearing in mind the patient's background.
-    3. Please also provide me with a detailed and numbered management plan based on the differentials.
-    4. Finally, provide the clinician with a learning point about the case, things that may normally be missed, etc. that is important to remember and impressive.
-    Make it impressive.
+    Pretend you are a doctor and provide:
+    1. A Severity Score: 1-5
+    2. Clinical Summary: A three sentence clinical summary of their symptoms (make sure to include patient's age and gender).
+    3. Differential Diagnoses: 5 differentials for the symptoms bearing in mind the patient's background.
+    4. Management Plan: 5 investigation or management actions based on the differentials.
+    5. Follow Up: A follow up plan for the patient.
+    6. Learning Point: A medical learning point about the likely differential diagnosis. Make it complex.
     Presenting Complaint: #{consultation.symptom_id}
     Age: #{consultation.user.age}
     Gender: #{consultation.user.gender}
