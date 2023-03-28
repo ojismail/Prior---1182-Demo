@@ -28,35 +28,35 @@
                     <h5 class="modal-title" id="symptom-<%= symptom.id %>-label"><%= symptom.name %></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="modal-body">
+                    <div class="modal-body">
                     <%= f.hidden_field :symptom_id, value: symptom.id %>
                     <div class="form-group">
                       <%= f.label :questionsandanswer_1, symptom.question_1 %>
-                      <%= f.text_field :questionsandanswer_1, class: "form-control" %>
+                      <%= f.select :questionsandanswer_1, symptom.question_1_options, {}, class: "form-control" %>
                     </div>
                     <div class="form-group">
                       <%= f.label :questionsandanswer_2, symptom.question_2 %>
-                      <%= f.text_field :questionsandanswer_2, class: "form-control" %>
+                      <%= f.select :questionsandanswer_2, symptom.question_2_options, {}, class: "form-control" %>
                     </div>
                     <div class="form-group">
                       <%= f.label :questionsandanswer_3, symptom.question_3 %>
-                      <%= f.text_field :questionsandanswer_3, class: "form-control" %>
+                      <%= f.select :questionsandanswer_3, symptom.question_3_options, {}, class: "form-control" %>
                     </div>
                     <div class="form-group">
                       <%= f.label :questionsandanswer_4, symptom.question_4 %>
-                      <%= f.text_field :questionsandanswer_4, class: "form-control" %>
+                      <%= f.select :questionsandanswer_4, symptom.question_4_options, {}, class: "form-control" %>
                     </div>
                     <div class="form-group">
                       <%= f.label :questionsandanswer_5, symptom.question_5 %>
-                      <%= f.text_field :questionsandanswer_5, class: "form-control" %>
+                      <%= f.select :questionsandanswer_5, symptom.question_5_options, {}, class: "form-control" %>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                       <%= f.label :questionsandanswer_6, symptom.question_6 %>
-                      <%= f.text_field :questionsandanswer_6, class: "form-control" %>
+                      <%= f.select :questionsandanswer_6, symptom.question_6_options, {}, class: "form-control" %>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                       <%= f.label :questionsandanswer_7, symptom.question_7 %>
-                      <%= f.text_field :questionsandanswer_7, class: "form-control" %>
+                      <%= f.select :questionsandanswer_7, symptom.question_7_options, {}, class: "form-control" %>
                     </div>
                   </div>
                   <div class="modal-footer">
