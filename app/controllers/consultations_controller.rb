@@ -68,7 +68,7 @@ class ConsultationsController < ApplicationController
   private
 
   def consultation_params
-    params.require(:consultation).permit(:gpt_prompt, :gpt_response, :email, :status, :name, :age, :gender, :symptom_id, :questionsandanswer_1, :questionsandanswer_2, :questionsandanswer_3, :questionsandanswer_4, :questionsandanswer_5, :questionsandanswer_6, :questionsandanswer_7)
+    params.require(:consultation).permit(:question_1_options, :question_2_options, :question_3_options, :question_4_options, :question_5_options, :question_6_options, :question_7_options, :name, :archive, :question_1, :question_2, :question_3, :question_4, :question_5, :question_6, :question_7, :gpt_prompt, :gpt_response, :email, :status, :name, :age, :gender, :symptom_id, :questionsandanswer_1, :questionsandanswer_2, :questionsandanswer_3, :questionsandanswer_4, :questionsandanswer_5, :questionsandanswer_6, :questionsandanswer_7)
   end
 
   def generate_gpt_prompt_and_response(consultation)

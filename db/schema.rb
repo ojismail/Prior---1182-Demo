@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_28_093531) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_28_143155) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_093531) do
     t.string "question_5"
     t.string "question_6"
     t.string "question_7"
+    t.string "question_1_options", array: true
+    t.string "question_2_options", array: true
+    t.string "question_3_options", array: true
+    t.string "question_4_options", array: true
+    t.string "question_5_options", array: true
+    t.string "question_6_options", array: true
+    t.string "question_7_options", array: true
   end
 
   create_table "users", force: :cascade do |t|
