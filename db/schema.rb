@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_27_083900) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_28_093531) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_083900) do
     t.string "gpt_prompt"
     t.bigint "user_id", null: false
     t.bigint "symptom_id", null: false
-    t.string "status"
+    t.string "status", default: "Active"
     t.integer "rating"
     t.string "questionsandanswer_1"
     t.string "questionsandanswer_2"
