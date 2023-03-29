@@ -1,13 +1,13 @@
 <div class="py-24 px-6 sm:py-32 lg:px-8">
   <div class="mx-auto max-w-7xl text-center">
     <div class="mx-auto max-w-2xl lg:mx-0">
-    <p class="text-base font-semibold leading-7 text-teal-600">Chat GPT knows best</p>
+    <p class="text-base font-semibold leading-7 text-teal-600">Index</p>
     <% if current_user.doctor? %>
         <p class="mt-2 text-4xl font-bold tracking-tight text-sky-900 sm:text-6xl">Consultations</p>
-        <p class="mt-6 text-lg leading-8 text-gray-600">A list of all consultations including their status, symptom, patient ID, age, gender, and action.</p>
+        <p class="mt-6 text-lg leading-8 text-gray-600">A list of all Consultations.</p>
       <% else %>
         <p class="mt-2 text-4xl font-bold tracking-tight text-sky-900 sm:text-6xl">My Consultations</p>
-        <p class="mt-6 text-lg leading-8 text-gray-600">A list of all your consultations including their status, symptom, and action.</p>
+        <p class="mt-6 text-lg leading-8 text-gray-600">A list of all your Active and Closed Consultations.</p>
       <% end %>
     </div>
   </div>
@@ -21,6 +21,7 @@
             <thead class="bg-gray-50">
               <tr>
                 <% if current_user.doctor? %>
+                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Action</th>
                   <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Status</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Symptom</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Rating</th>
@@ -28,18 +29,21 @@
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Age</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Gender</th>
                 <% else %>
+                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Action</th>
                   <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Status</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Symptom</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Rating</th>
                 <% end %>
-                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                  <span class="sr-only">Action</span>
-                </th>
               </tr>
               </thead>
 <tbody class="divide-y divide-gray-200 bg-white">
   <% if current_user.doctor? %>
     <% @consultations.each do |consultation| %>
       <tr class="hover:bg-gray-100">
+        <td class="px-6 py-4 whitespace-nowrap">
+        <%= button_to 'Open', consultation_path(consultation), method: :get, class: 'px-3 py-1 text-sm font-medium text-green-600 rounded-md border border-green-600 hover:text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mr-2' %>
+        <%# <%= button_to 'Delete', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'px-3 py-1 text-sm font-medium text-red-600 rounded-md border border-red-600 hover:text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500' %>
+      </td>
         <td class="px-6 py-4 whitespace-nowrap">
         <%= consultation.status %>
         </td>
@@ -48,7 +52,7 @@
         </td>
         <td class="px-6 py-4 whitespace-nowrap">
         <%= consultation.rating %>
-      </td>
+        </td>
         <td class="px-6 py-4 whitespace-nowrap">
           <%= consultation.user_id %>
         </td>
@@ -57,25 +61,23 @@
         </td>
         <td class="px-6 py-4 whitespace-nowrap">
           <%= consultation.user.gender %>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">
-        <%= button_to 'Open', consultation_path(consultation), method: :get, class: 'px-3 py-1 text-sm font-medium text-green-600 rounded-md border border-green-600 hover:text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mr-2' %>
-        <%= button_to 'Delete', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'px-3 py-1 text-sm font-medium text-red-600 rounded-md border border-red-600 hover:text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500' %>
-      </td>
       </tr>
     <% end %>
   <% else %>
     <% @consultations_user.each do |consultation| %>
       <tr class="hover:bg-gray-100">
-      <td class="px-6 py-4 whitespace-nowrap">
+        <td class="px-6 py-4 whitespace-nowrap">
+        <%= button_to 'Open', consultation_path(consultation), method: :get, class: 'px-3 py-1 text-sm font-medium text-green-600 rounded-md border border-green-600 hover:text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mr-2' %>
+        <%# <%= button_to 'Delete', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'px-3 py-1 text-sm font-medium text-red-600 rounded-md border border-red-600 hover:text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500' %>
+      </td>
+        <td class="px-6 py-4 whitespace-nowrap">
         <%= consultation.status %>
         </td>
         <td class="px-6 py-4 whitespace-nowrap">
           <%= consultation.symptom.name %>
         </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-        <%= button_to 'Open', consultation_path(consultation), method: :get, class: 'px-3 py-1 text-sm font-medium text-green-600 rounded-md border border-green-600 hover:text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mr-2' %>
-        <%= button_to 'Delete', consultation_path(consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'px-3 py-1 text-sm font-medium text-red-600 rounded-md border border-red-600 hover:text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500' %>
+        <td class="px-6 py-4 whitespace-nowrap">
+        <%= consultation.rating %>
       </td>
       </tr>
     <% end %>
