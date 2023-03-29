@@ -68,13 +68,13 @@ Symptom.create(
 Symptom.create(
   name: "Abdominal Pain",
   archive: nil,
-  question_1: "When did the pain start?",
+  question_1: "When did the abdominal pain start?",
   question_1_options: ["Today", "Yesterday", "Few days ago", "Weeks ago", "Months ago"],
-  question_2: "Where is the pain in relation to your belly button?",
+  question_2: "Where is the abdominal pain in relation to your belly button?",
   question_2_options: ["Above belly button", "Below belly button", "All around belly button", "Right side of belly button", "Left side of belly button"],
-  question_3: "Is the pain constant or does it come and go?",
+  question_3: "Is the abdominal pain constant or does it come and go?",
   question_3_options: ["Constant", "Intermittent", "Only after eating", "Only at night", "Only during exercise"],
-  question_4: "Does the pain occur after eating?",
+  question_4: "Does the abdominal pain occur after eating?",
   question_4_options: ["Yes, every time", "Sometimes", "No"],
   question_5: "Do you have any other associated symptoms, such as nausea or vomiting?",
   question_5_options: ["Yes", "No"],
@@ -100,7 +100,7 @@ Symptom.create(
   question_6: "Have you ever had a similar headache before?",
   question_6_options: ["Yes, same type of headache", "Yes, different type of headache", "No"],
   question_7: "Have you recently had any head trauma or injury?",
-  question_7_options: ["Yes", "No"]
+  question_7_options: ["Yes, I have had head trauma or injury in the past 24 hours", "Yes, I have had head trauma or injury in the past week", "Yes, I have had head trauma or injury in the past month", "Yes, I have had head trauma or injury in the past year", "No, I have not had any head trauma or injury recently"]
   )
 
   Symptom.create(
@@ -117,9 +117,9 @@ Symptom.create(
   question_5: "What brings the dizziness on?",
   question_5_options: ["Standing up", "Turning head", "Moving around", "Not sure"],
   question_6: "Have you had any recent ear infections or ear surgery?",
-  question_6_options: ["Yes", "No"],
+  question_6_options: ["Yes, I have had an ear infection or ear surgery in the past 24 hours", "Yes, I have had an ear infection or ear surgery in the past week", "Yes, I have had an ear infection or ear surgery in the past month", "Yes, I have had an ear infection or ear surgery in the past year", "No, I have not had any recent ear infections or ear surgery"],
   question_7: "Have you recently started or changed any medication?",
-  question_7_options: ["Yes", "No"]
+  question_7_options: ["Yes, I have started or changed medication in the past 24 hours", "Yes, I have started or changed medication in the past week", "Yes, I have started or changed medication in the past month", "Yes, I have started or changed medication in the past year", "No, I have not started or changed any medication recently"]
   )
 
   Symptom.create(
@@ -145,11 +145,11 @@ Symptom.create(
     Symptom.create(
       name: "Joint Pain",
       archive: nil,
-      question_1: "When did the pain start?",
+      question_1: "When did the joint pain start?",
       question_1_options: ["Today", "Yesterday", "Last week", "Last month", "More than a month ago"],
       question_2: "Which joints are affected by the pain?",
       question_2_options: ["Knees", "Hips", "Shoulders", "Elbows", "Multiple joints"],
-      question_3: "Does the pain improve with rest or activity?",
+      question_3: "Does the joint pain improve with rest or activity?",
       question_3_options: ["Rest improves the pain", "Activity improves the pain", "It varies", "Neither rest nor activity improve the pain", "I'm not sure"],
       question_4: "Are you experiencing any swelling, redness or stiffness in the joints?",
       question_4_options: ["Yes, I have swelling", "Yes, I have redness", "Yes, I have stiffness", "No, I don't have any of these symptoms", "I'm not sure"],
@@ -169,15 +169,15 @@ Symptom.create(
   question_2: "How severe is the nausea or vomiting?",
   question_2_options: ["Mild", "Moderate", "Severe", "Unbearable", "Unable to rate"],
   question_3: "Are you experiencing any abdominal pain or discomfort?",
-  question_3_options: ["Yes", "No"],
+  question_3_options: ["Yes, I have mild abdominal pain or discomfort", "Yes, I have moderate abdominal pain or discomfort", "Yes, I have severe abdominal pain or discomfort", "No, I am not experiencing any abdominal pain or discomfort", "I am not sure"],
   question_4: "Have you recently eaten any unusual or spoiled food?",
-  question_4_options: ["Yes", "No"],
+  question_4_options: ["Yes, I have eaten unusual or spoiled food in the past 24 hours", "Yes, I have eaten unusual or spoiled food in the past week", "Yes, I have eaten unusual or spoiled food in the past month", "No, I have not eaten any unusual or spoiled food recently", "I am not sure"],
   question_5: "Any recent travel?",
-  question_5_options: ["Yes", "No"],
+  question_5_options: ["Yes, I have traveled internationally in the past 24 hours", "Yes, I have traveled internationally in the past week", "Yes, I have traveled internationally in the past month", "Yes, I have traveled domestically in the past 24 hours", "No, I have not traveled recently"],
   question_6: "Any change in your bowel habit?",
-  question_6_options: ["Yes", "No"],
+  question_6_options: ["Yes, I have had a change in my bowel habit in the past 24 hours", "Yes, I have had a change in my bowel habit in the past week", "Yes, I have had a change in my bowel habit in the past month", "No, I have not had any change in my bowel habit recently", "I am not sure"],
   question_7: "Have you had any other symptoms?",
-  question_7_options: ["Yes", "No"]
+question_7_options: ["Yes, I have abdominal pain or cramping", "Yes, I have diarrhea", "Yes, I have a fever", "Yes, I have dizziness or lightheadedness", "No, I have not had any other symptoms"]
   )
 
 
@@ -209,15 +209,15 @@ Symptom.create(
   question_2: "Is the cough productive or dry?",
   question_2_options: ["Productive", "Dry", "Intermittent"],
   question_3: "Are you experiencing any chest pain or shortness of breath?",
-  question_3_options: ["Yes", "No"],
+  question_3_options: ["Yes, I have mild chest pain or shortness of breath", "Yes, I have moderate chest pain or shortness of breath", "Yes, I have severe chest pain or shortness of breath", "No, I am not experiencing any chest pain or shortness of breath", "I am not sure"],
   question_4: "Have you ever had a similar cough before?",
-  question_4_options: ["Yes", "No"],
+  question_4_options: ["Yes, I have had a similar cough before", "No, I have not had a similar cough before", "I am not sure"],
   question_5: "Have you recently been exposed to any irritants or allergens?",
   question_5_options: ["Yes", "No"],
   question_6: "Are you currently taking any medications for the cough?",
-  question_6_options: ["Yes", "No"],
+  question_6_options: ["Yes, I am taking prescribed medication for the cough", "Yes, I am taking over-the-counter medication for the cough", "Yes, I am taking herbal or alternative medication for the cough", "No, I am not taking any medication for the cough", "I am not sure"],
   question_7: "Have you noticed any other symptoms, such as fever or fatigue?",
-  question_7_options: ["Yes", "No"]
+  question_7_options: ["Yes, I have a fever", "Yes, I have fatigue", "Yes, I have both fever and fatigue", "No, I have not noticed any other symptoms", "I am not sure"]
   )
 
   Symptom.create(
@@ -228,15 +228,15 @@ Symptom.create(
   question_2: "Is the soreness localized or widespread?",
   question_2_options: ["Localized", "Widespread"],
   question_3: "Are you experiencing any difficulty swallowing or speaking?",
-  question_3_options: ["Yes", "No"],
+  question_3_options: ["Yes, I have difficulty swallowing", "Yes, I have difficulty speaking", "Yes, I have both difficulty swallowing and speaking", "No, I am not experiencing any difficulty swallowing or speaking", "I am not sure"],
   question_4: "Any associated cough?",
-  question_4_options: ["Yes", "No"],
+  question_4_options: ["Yes, I have a cough that is associated with the difficulty swallowing or speaking", "Yes, I have a cough that is not associated with the difficulty swallowing or speaking", "No, I do not have a cough", "I am not sure", "N/A"],
   question_5: "Have you noticed any other symptoms, such as fever or swollen glands?",
-  question_5_options: ["Yes", "No"],
+  question_5_options: ["Yes, I have a fever", "Yes, I have swollen glands", "Yes, I have both fever and swollen glands", "No, I have not noticed any other symptoms", "I am not sure"],
   question_6: "Any unwell contacts?",
-  question_6_options: ["Yes", "No"],
+  question_6_options: ["Yes, I have been in close contact with someone who is unwell", "No, I have not been in close contact with anyone who is unwell", "I am not sure", "N/A", "I prefer not to answer"],
   question_7: "Any recent foreign travel?",
-  question_7_options: ["Yes", "No"]
+  question_7_options: ["Yes, I have traveled internationally in the past 14 days", "No, I have not traveled internationally recently", "I am not sure", "N/A", "I prefer not to answer"]
   )
 
   Symptom.create(
@@ -249,19 +249,19 @@ Symptom.create(
   question_3: "Are you experiencing any itching or pain with the rash?",
   question_3_options: ["Yes", "No"],
   question_4: "Have you recently used any new skincare products or detergents?",
-  question_4_options: ["Yes", "No"],
+  question_4_options: ["Yes, I have used new skincare products", "Yes, I have used new detergents", "Yes, I have used both new skincare products and detergents", "No, I have not used any new skincare products or detergents", "I am not sure"],
   question_5: "Have you ever had a similar rash before?",
-  question_5_options: ["Yes", "No"],
+  question_5_options: ["Yes, I have had a similar rash before", "No, I have never had a similar rash before", "I am not sure", "N/A", "I prefer not to answer"],
   question_6: "Are you currently taking any medications for the rash?",
-  question_6_options: ["Yes", "No"],
+  question_6_options: ["Yes, I am taking prescribed medication for the rash", "Yes, I am taking over-the-counter medication for the rash", "Yes, I am taking herbal or alternative medication for the rash", "No, I am not taking any medication for the rash", "I am not sure"],
   question_7: "Have you noticed any other symptoms, such as fever or joint pain?",
-  question_7_options: ["Yes", "No"]
+  question_7_options: ["Yes, I have a fever", "Yes, I have joint pain", "Yes, I have both fever and joint pain", "No, I have not noticed any other symptoms", "I am not sure"]
   )
 
   Symptom.create(
     name: "Painful Urination",
     archive: nil,
-    question_1: "When did the pain start?",
+    question_1: "When did the pain passing urine start?",
     question_1_options: ["Today", "Yesterday", "Few days ago", "Weeks ago", "Months ago"],
     question_2: "How severe is the pain?",
     question_2_options: ["Mild", "Moderate", "Severe", "Unbearable"],
@@ -312,7 +312,7 @@ Symptom.create(
       question_6: "Are you currently taking any medications?",
       question_6_options: ["Yes", "No"],
       question_7: "Have you noticed any other symptoms?",
-      question_7_options: ["Yes", "No"]
+      question_7_options: ["Yes, I have chest pain or discomfort", "Yes, I have shortness of breath", "Yes, I have dizziness or lightheadedness", "Yes, I have fainting or near-fainting spells", "No, I have not noticed any other symptoms"],
       )
 
       Symptom.create(
@@ -323,15 +323,15 @@ Symptom.create(
       question_2: "Which ear is affected?",
       question_2_options: ["Left", "Right", "Both"],
       question_3: "Are you experiencing any other symptoms such as fever, headache, or discharge from the ear?",
-      question_3_options: ["Yes", "No"],
+      question_3_options: ["Yes, I have a fever", "Yes, I have a headache", "Yes, I have discharge from the ear", "Yes, I have two or more of these symptoms", "No, I am not experiencing any other symptoms"],
       question_4: "Are you experiencing any hearing loss?",
-      question_4_options: ["Yes", "No"],
+      question_4_options: ["Yes, I have mild hearing loss", "Yes, I have moderate hearing loss", "Yes, I have severe hearing loss", "No, I am not experiencing any hearing loss", "I am not sure"],
       question_5: "Have you had any recent cold or flu symptoms?",
-      question_5_options: ["Yes", "No"],
+      question_5_options: ["Yes, I have had cold symptoms", "Yes, I have had flu symptoms", "Yes, I have had both cold and flu symptoms", "No, I have not had any cold or flu symptoms recently", "I am not sure"],
       question_6: "Have you had any recent trauma or injury to the ear?",
-      question_6_options: ["Yes", "No"],
+      question_6_options: ["Yes, I have had trauma or injury to the ear in the past 24 hours", "Yes, I have had trauma or injury to the ear in the past week", "Yes, I have had trauma or injury to the ear in the past month", "No, I have not had any recent trauma or injury to the ear", "I am not sure"],
       question_7: "Have you noticed any recent changes in your hearing or balance?",
-      question_7_options: ["Yes", "No"]
+      question_7_options: ["Yes, I have noticed a change in my hearing", "Yes, I have noticed a change in my balance", "Yes, I have noticed changes in both my hearing and balance", "No, I have not noticed any recent changes in my hearing or balance", "I am not sure"]
       )
 
 
@@ -380,14 +380,18 @@ Symptom.create(
         question_1_options: ["Today", "Yesterday", "Few days ago", "Weeks ago", "Months ago"],
         question_2: "How long did the fainting episode last?",
         question_2_options: ["Few seconds", "Few minutes", "More than 5 minutes"],
-        question_3: "Did you experience any warning signs such as dizziness or nausea before fainting?",
-        question_3_options: ["Yes", "No"],
-        question_4: "Have you experienced fainting before?",
-        question_4_options: ["Yes", "No"],
-        question_5: "Do you have any history of heart disease or seizures?",
-        question_5_options: ["Yes", "No"],
-        question_6: "Are you currently taking any medications?",
-        question_6_options: ["Yes", "No"],
-        question_7: "Have you noticed any other symptoms?",
-        question_7_options: ["Yes", "No"]
+        question_3: "Did you experience any warning signs such as dizziness, lightheadedness, blurred vision, or nausea before fainting?",
+        question_3_options: ["Yes, I experienced dizziness", "Yes, I experienced lightheadedness", "Yes, I experienced blurred vision", "Yes, I experienced nausea", "No, I did not experience any warning signs before fainting"],
+
+        question_4: "Have you experienced fainting before? If yes, how many times?",
+        question_4_options: ["Yes, I have experienced fainting once before", "Yes, I have experienced fainting multiple times before", "No, I have never experienced fainting before", "I am not sure", "I prefer not to answer"],
+
+        question_5: "Do you have any history of heart disease, seizures, or low blood pressure?",
+        question_5_options: ["Yes, I have a history of heart disease", "Yes, I have a history of seizures", "Yes, I have a history of low blood pressure", "No, I do not have a history of any of these conditions", "I am not sure"],
+
+        question_6: "Are you currently taking any medications that may affect blood pressure or heart function?",
+        question_6_options: ["Yes, I am taking medications that may affect blood pressure", "Yes, I am taking medications that may affect heart function", "Yes, I am taking medications that may affect both blood pressure and heart function", "No, I am not taking any medications that may affect blood pressure or heart function", "I am not sure"],
+
+        question_7: "Have you noticed any other symptoms, such as chest pain, shortness of breath, or headache?",
+        question_7_options: ["Yes, I have chest pain", "Yes, I have shortness of breath", "Yes, I have headache", "Yes, I have two or more of these symptoms", "No, I have not noticed any other symptoms"]
         )
