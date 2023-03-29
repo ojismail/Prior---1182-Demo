@@ -1,4 +1,20 @@
-<h2>Sign up</h2>
+  <style>
+    .input-filled {
+      background-color: lightgreen;
+    }
+  </style>
+
+<div class="mt-8 py-24 sm:py-8">
+  <div class="mx-auto max-w-7xl text-center">
+    <div class="mx-auto max-w-2xl lg:mx-0">
+      <p class="text-base font-semibold leading-7 text-indigo-600">Chat GPT knows best</p>
+      <h2 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Sign Up</h2>
+      <p class="mt-6 text-lg leading-8 text-gray-600">Please enter all your relevant information below! </p>
+    </div>
+  </div>
+</div>
+
+<div class="px-4 sm:px-8">
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
   <%= f.error_notification %>
@@ -6,23 +22,39 @@
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email", class: "input-field" }%>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password", class: "input-field" } %>
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password", class: "input-field" } %>
     <%= f.input :age, label: 'Age', as: :integer %>
     <%= f.input :gender, as: :radio_buttons, collection: [['Male', 'Male'], ['Female', 'Female'], ['Other', 'Other']], label: 'Gender' %>
-    <%= f.input :medical_history, label: 'Medical History' %>
-    <%= f.input :drug_history, label: 'Drug History' %>
-    <%= f.input :allergy_history, label: 'Allergy History' %>
+    <%= f.input :medical_history, label: 'Medical History', class: "input-field" %>
+    <%= f.input :drug_history, label: 'Drug History', class: "input-field" %>
+    <%= f.input :allergy_history, label: 'Allergy History', class: "input-field" %>
     <%= f.input :role, as: :radio_buttons, collection: [['Patient', 0], ['Doctor', 1]], label: 'Role' %>
   </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+  <div class="form-actions" style="margin-bottom: 2rem;">
+    <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+    <%= link_to "Log in", new_session_path(resource_name), class: "btn btn-primary" %><br />
   </div>
 <% end %>
-<%= render "devise/shared/links" %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var inputFields = document.querySelectorAll('.input-field');
+
+    inputFields.forEach(function(inputField) {
+      inputField.addEventListener('input', function() {
+        if (inputField.value.trim() !== '') {
+          inputField.classList.add('input-filled');
+        } else {
+          inputField.classList.remove('input-filled');
+        }
+      });
+    });
+  });
+</script>
