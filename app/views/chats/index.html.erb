@@ -1,0 +1,41 @@
+<div class="py-24 px-6 sm:py-32 lg:px-6">
+  <div class="mx-auto max-w-7xl text-center">
+    <div class="mx-auto max-w-2xl lg:mx-0">
+      <p class="text-base font-semibold leading-7 text-teal-600">Ask</p>
+      <% if current_user.doctor? %>
+        <p class="mt-2 text-4xl font-bold tracking-tight text-sky-900 sm:text-6xl">Consult with Dr.GPT</p>
+        <p class="mt-6 text-lg leading-8 text-gray-600">Do you concur?</p>
+      <% else %>
+        <p class="mt-2 text-4xl font-bold tracking-tight text-sky-900 sm:text-6xl">Chat with Dr.GPT</p>
+        <p class="mt-6 text-lg leading-8 text-gray-600">Ask and ye shall receive...</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="chat-messages space-y-4">
+  <% @chats.each do |chat| %>
+    <% if chat.sender_type == 'ChatGPT' %>
+      <div class="flex justify-start mb-4">
+        <div class="bg-blue-500 text-white rounded-lg py-2 px-4 max-w-xs">
+          <%= chat.content %>
+        </div>
+      </div>
+    <% else %>
+      <div class="flex justify-end mb-4">
+        <div class="bg-green-500 text-white rounded-lg py-2 px-4 max-w-xs">
+          <%= chat.content %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+
+<%= form_for @chat, url: chats_path, html: { class: "mt-8" } do |f| %>
+  <%= f.label :content, "Your Message:", class: "block font-medium mb-2" %>
+  <%= f.text_area :content, class: "w-full p-2 mb-4 border rounded-lg" %>
+  <%= f.submit "Send", class: "py-2 px-4 bg-teal-500 text-white font-semibold rounded-lg mr-2" %>
+  <%= button_to "Clear", clear_chats_path, method: :post, class: "py-2 px-4 bg-red-500 text-white font-semibold rounded-lg" %>
+<% end %>
