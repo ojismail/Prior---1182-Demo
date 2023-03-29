@@ -1,12 +1,12 @@
 <div class=" py-24 sm:py-8">
   <div class="mx-auto max-w-7xl text-center">
     <div class="mx-auto max-w-2xl lg:mx-0">
-    <p class="text-base font-semibold leading-7 text-indigo-600">Chat GPT knows best</p>
+    <p class="text-base font-semibold leading-7 text-teal-600">Chat GPT knows best</p>
     <% if current_user.doctor? %>
-        <h2 class="mt-2 text-4xl font-semibold tracking-tight text-gray-900 sm:text-6xl">Consultations</h2>
+        <p class="mt-2 text-4xl font-bold tracking-tight text-sky-900 sm:text-6xl">Consultations</p>
         <p class="mt-6 text-lg leading-8 text-gray-600">A list of all consultations including their status, symptom, patient ID, age, gender, and action.</p>
       <% else %>
-        <h2 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">My Consultations</h2>
+        <p class="mt-2 text-4xl font-bold tracking-tight text-sky-900 sm:text-6xl">My Consultations</p>
         <p class="mt-6 text-lg leading-8 text-gray-600">A list of all your consultations including their status, symptom, and action.</p>
       <% end %>
     </div>
