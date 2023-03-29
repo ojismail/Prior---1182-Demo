@@ -1,10 +1,13 @@
 <div class="container mx-auto mt-4">
   <% if current_user.doctor? %>
-    <div class="bg-white shadow-md rounded-lg">
-      <div class="p-4 border-b">
-        <h4 class="text-xl font-semibold mb-0">Consultation Summary</h4>
-      </div>
-      <div class="p-4">
+    <div class=" shadow-md rounded-lg">
+      <div class="py-20 px-6 sm:py-20 pb-2 lg:px-8">
+  <div class="mx-auto max-w-2xl text-center">
+    <p class="text-base font-semibold leading-7 text-teal-600">Chat GPT has spoken</p>
+    <p class="mt-2 text-2xl font-bold tracking-tight text-sky-900 sm:text-4xl"><%= @consultation.user.email %></p>
+  </div>
+</div>
+      <div class="p-4 py-0">
        <p class="mb-2"><strong class="font-semibold">Patient ID:</strong> <%= @consultation.user_id %></p>
        <p class="mb-2"><strong class="font-semibold">Symptom:</strong> <%= @consultation.symptom.name %></p>
        <p class="mb-2"><strong class="font-semibold">Age:</strong> <%= @consultation.user.age %></p>
@@ -75,13 +78,12 @@
 <% else %>
 
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h2>Consultation Summary</h2>
-      <hr>
-    </div>
+  <div class="py-20 px-6 sm:py-20 lg:px-8 pb-2">
+  <div class="mx-auto max-w-2xl text-center">
+    <p class="text-base font-semibold leading-7 text-teal-600">What you said</p>
+    <p class="mt-2 text-2xl font-bold tracking-tight text-sky-900 sm:text-4xl"><%= @consultation.user.email %></p>
   </div>
+</div>
 
   <div class="row">
     <div class="col-md-12">
@@ -145,10 +147,11 @@
 
 <% end %>
 
-
+<% if current_user.doctor? %>
 <div class="flex justify-end mt-4 space-x-4">
-  <%= link_to 'Edit', edit_consultation_path(@consultation), class: 'px-3 py-1 text-sm font-medium text-gray-700 rounded-md border border-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500' %>
   <%= link_to 'Back', consultations_path, class: 'px-3 py-1 text-sm font-medium text-gray-700 rounded-md border border-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500' %>
   <%= button_to 'Close', close_consultation_path(@consultation), method: :patch, data: { confirm: 'Are you sure?' }, class: 'px-3 py-1 text-sm font-medium text-green-600 rounded-md border border-green-600 hover:text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500' %>
   <%= button_to 'Delete', consultation_path(@consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'px-3 py-1 text-sm font-medium text-red-600 rounded-md border border-red-600 hover:text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500' %>
 </div>
+<br>
+<% end %>

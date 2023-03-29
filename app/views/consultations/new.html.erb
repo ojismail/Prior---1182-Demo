@@ -1,12 +1,17 @@
-<div class="card">
-  <div class="card-body">
+<br><br>
     <% if current_user.doctor? %>
       <p class="card-text">Welcome, Doctor! You cannot create a consultation.</p>
     <% else %>
-      <p class="card-text">Welcome, Patient! Please select your symptom to begin a consultation:</p>
+      <div class="py-20 px-6 sm:py-20 lg:px-8 pb-2">
+  <div class="mx-auto max-w-2xl text-center">
+    <p class="text-base font-semibold leading-7 text-teal-600">Pick your poison</p>
+    <p class="mt-2 text-2xl font-bold tracking-tight text-sky-900 sm:text-4xl">What is your main issue?</p>
+  </div>
+</div>
+<div class="mx-auto max-w-2xl text-center">
        <%= form_tag new_consultation_path, method: :get, class: "flex items-center mb-4" do %>
-      <div class="flex items-center bg-white rounded-lg border-2 border-gray-200">
-        <%= text_field_tag :search, params[:search], placeholder: "Search for your symptom...", class: "py-2 px-4 rounded-l-lg focus:outline-none" %>
+      <div class="flex items-center rounded-lg border-2 border-gray-200">
+        <%= text_field_tag :search, params[:search], placeholder: "Search it.", class: "py-2 px-4 rounded-l-lg focus:outline-none" %>
         <div class="p-2">
           <%= button_tag type: :submit, class: "bg-blue-500 text-white rounded-r-lg hover:bg-blue-400 focus:outline-none" do %>
             <i class="fas fa-search"></i>
@@ -22,7 +27,7 @@
             </button>
             <br>
             <div class="modal fade" id="symptom-<%= symptom.id %>" tabindex="-1" role="dialog" aria-labelledby="symptom-<%= symptom.id %>-label" aria-hidden="true">
-              <div class="modal-dialog" role="document">
+              <div class="modal-dialog pt-12" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="symptom-<%= symptom.id %>-label"><%= symptom.name %></h5>
@@ -70,7 +75,4 @@
         <% end %>
       <% end %>
     <% end %>
-  </div>
 </div>
-
-<%= link_to 'Back', consultations_path, class: 'btn btn-outline-danger' %>
