@@ -45,7 +45,9 @@ class SymptomsController < ApplicationController
   end
 
   def symptom_params
-    params.require(:symptom).permit(:question_1_options, :question_2_options, :question_3_options, :question_4_options, :question_5_options, :question_6_options, :question_7_options, :name, :archive, :question_1, :question_2, :question_3, :question_4, :question_5, :question_6, :question_7)
+    params.require(:symptom).permit(:question_1_options, :question_2_options, :question_3_options, :question_4_options, :question_5_options, :question_6_options, :question_7_options, :name, :archive, :question_1, :question_2, :question_3, :question_4, :question_5, :question_6, :question_7, question_1_options: [], question_2_options: [], question_3_options: [], question_4_options: [],
+      question_5_options: [], question_6_options: [], question_7_options: []
+    )
   end
 
 end

@@ -1,7 +1,13 @@
-<div class="mx-5 p-4 mt-5" data-controller="consultation">
+<div class="lg:mx-5 lg:p-4 mt-5" data-controller="consultation">
+  <div class="py-20 px-6 sm:py-20 pb-2 lg:px-8">
+  <div class="mx-auto max-w-2xl text-center">
+    <p class="text-base font-semibold leading-7 text-teal-600">ChatGPT has spoken</p>
+    <p class="mt-2 text-2xl font-bold tracking-tight text-sky-900 sm:text-4xl"><%= @consultation.user.email %></p>
+  </div>
+
   <% if current_user.doctor? %>
     <div class="p-2">
-      <div class="p-2 border-b flex md:justify-between flex-col">
+      <div class="p-2 border-b md:flex md:justify-between">
         <h4 class="text-xl font-semibold">Consultation Summary</h4>
         <div class="flex md:justify-end space-x-4 justify-center">
           <%= link_to 'Back', consultations_path, class: 'px-3 py-1 text-sm font-medium text-gray-700 rounded-md border h-8 text-decoration-none border-gray-300 text-white bg-gray-600 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500' %>
@@ -94,8 +100,14 @@
             </dt>
             <dd class="mt-2 pr-12 q-<%= index %>">
               <p class="text-base leading-7 text-gray-600"><%= title.split(":")[1] %></p>
+                <ul class="pl-0 mb-0">
+                <% items.each do |item| %>
+                  <li><%= item %></li>
+                <% end %>
+              </ul>
             </dd>
           </div>
+          
           <% end %>
         </div>
       </div>
