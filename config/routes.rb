@@ -12,18 +12,17 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
+  resources :chats, only: [:index, :create]
+
   resources :consultations do
     patch :close, on: :member
-    # other routes, if any...
   end
-  # get 'consultations/new', to: 'consultations#new', as: 'new_consultation'
-  # post 'consultations', to: 'consultations#create'
-  # get 'consultations/:id/edit', to: 'consultations#edit', as: 'edit_consultation'
-  # patch 'consultations/:id', to: 'consultations#update'
-  # get 'consultations', to: 'consultations#index'
-  # get 'consultations/:id', to: 'consultations#show', as: 'consultation'
-  # get 'consultations/:id/edit', to: 'consultations#edit'
-  # patch 'consultations/:id/close', to: 'consultations#close'
+
+  resources :chats do
+    collection do
+      post :clear
+    end
+  end
 
   get 'symptoms/new', to: 'symptoms#new'
   post 'symptoms', to: 'symptoms#create'
