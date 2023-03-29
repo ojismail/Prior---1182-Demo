@@ -1,4 +1,10 @@
-<h1>Symptoms#new</h1>
+<div class="py-24 px-6 sm:py-32 lg:px-8">
+  <div class="mx-auto max-w-2xl text-center">
+    <p class="text-base font-semibold leading-7 text-teal-600">What is wrong with them?</p>
+    <p class="mt-2 text-4xl font-bold tracking-tight text-sky-900 sm:text-6xl">Create Symptoms</p>
+    <p class="mt-6 text-lg leading-8 text-gray-600">Add new symptoms that your patients can pick from. Additonally add the questions&answers they shall truthfully send to our good friend Chat GPT.</p>
+  </div>
+</div>
 
 <%= simple_form_for @symptom do |f| %>
   <%= f.input :name, label: 'Symptom Name', required: true %>
