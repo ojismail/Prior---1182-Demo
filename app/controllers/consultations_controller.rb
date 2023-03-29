@@ -25,7 +25,7 @@ class ConsultationsController < ApplicationController
     @consultation = current_user.consultations.build(consultation_params)
     if @consultation.save
       generate_gpt_prompt_and_response(@consultation)
-      redirect_to consultations_path, notice: 'Consultation was successfully created.'
+      redirect_to consultations_path, notice: 'Created! Thank you for trusting us for trusting ChatGPT.'
     else
       @symptoms = Symptom.all
       puts @consultation.errors.full_messages
@@ -51,14 +51,14 @@ class ConsultationsController < ApplicationController
     @consultation = Consultation.find(params[:id])
     @consultation.status = 'Closed'
     @consultation.save
-    redirect_to consultations_path, notice: 'Consultation was successfully closed.'
+    redirect_to consultations_path, notice: 'Closed! SKYNET IS COMING!'
   end
 
 
   def destroy
     @consultation = Consultation.find(params[:id])
     @consultation.destroy
-    redirect_to consultations_path, notice: "Consultation was successfully deleted."
+    redirect_to consultations_path, notice: "Deleted! AI is taking over! "
   end
 
   def create_prompt
