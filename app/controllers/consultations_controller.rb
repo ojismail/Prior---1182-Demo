@@ -75,11 +75,11 @@ class ConsultationsController < ApplicationController
     # Generate the prompt based on the consultation data and additional instructions
     prompt = <<-PROMPT
     I'm going to give you a list of questions and answers a patient has provided me alongside some background information.
-    Pretend you are a doctor and provide:
-    1. Clinical Summary: A three sentence clinical summary of their symptoms (make sure to include patient's age and gender).
-    2. Differential Diagnoses: 5 differentials for the symptoms bearing in mind the patient's background.
-    3. Management Plan: 5 investigation or management actions based on the differentials.
-    4. Learning Point: A medical learning point about the case. Make it complex.
+    Provide the following:
+    1. Clinical Summary: The patient has presented with #{consultation.symptom_id}. Give me a five sentence clinical summary of their symptoms (make sure to include patient's age and gender).
+    2. Differential Diagnoses: List of 5 differentials for the symptoms bearing in mind the patient's background.
+    3. Management Plan: List of 5 investigation or management actions based on the differentials.
+    4. Learning Point: A learning point about the likely clinical condition. Make it precise and impressive.
     Presenting Complaint: #{consultation.symptom_id}
     Age: #{consultation.user.age}
     Gender: #{consultation.user.gender}
