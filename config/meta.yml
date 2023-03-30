@@ -1,0 +1,5 @@
+meta_product_name: "Prior"
+meta_title: "Prior - ChatGPT Enabled Healthcare"
+meta_description: "Better, Safer, Faster Consultations"
+meta_image: "app/assets/images/prior2.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
