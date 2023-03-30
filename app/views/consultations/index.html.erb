@@ -23,6 +23,7 @@
                 <% if current_user.doctor? %>
                   <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Action</th>
                   <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Status</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Symptom</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Rating</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Patient ID</th>
@@ -31,6 +32,7 @@
                 <% else %>
                   <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Action</th>
                   <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Status</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Symptom</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Rating</th>
                 <% end %>
@@ -47,6 +49,9 @@
         <td class="px-6 py-4 whitespace-nowrap">
         <%= consultation.status %>
         </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+        <%= consultation.created_at.strftime("%Y-%m-%d") %>
+      </td>
         <td class="px-6 py-4 whitespace-nowrap">
           <%= consultation.symptom.name %>
         </td>
@@ -73,6 +78,9 @@
         <td class="px-6 py-4 whitespace-nowrap">
         <%= consultation.status %>
         </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+        <%= consultation.created_at.strftime("%Y-%m-%d") %>
+      </td>
         <td class="px-6 py-4 whitespace-nowrap">
           <%= consultation.symptom.name %>
         </td>

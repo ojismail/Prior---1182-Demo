@@ -1,7 +1,7 @@
 <div class="py-24 px-6 sm:py-32 lg:px-6">
   <div class="mx-auto max-w-7xl text-center">
     <div class="mx-auto max-w-2xl lg:mx-0">
-      <p class="text-base font-semibold leading-7 text-teal-600">Ask</p>
+      <p class="text-base font-semibold leading-7 text-teal-600">Chat</p>
       <% if current_user.doctor? %>
         <p class="mt-2 text-4xl font-bold tracking-tight text-sky-900 sm:text-6xl">Consult with Dr.GPT</p>
         <p class="mt-6 text-lg leading-8 text-gray-600">Do you concur?</p>
@@ -16,13 +16,13 @@
   <% @chats.each do |chat| %>
     <% if chat.sender_type == 'ChatGPT' %>
       <div class="flex justify-start mb-4">
-        <div class="bg-blue-500 text-white rounded-lg py-2 px-4 max-w-xs">
+        <div class="bg-teal-500 text-white rounded-lg py-2 px-4 max-w-xs">
           <%= chat.content %>
         </div>
       </div>
     <% else %>
       <div class="flex justify-end mb-4">
-        <div class="bg-green-500 text-white rounded-lg py-2 px-4 max-w-xs">
+        <div class="bg-sky-500 text-white rounded-lg py-2 px-4 max-w-xs">
           <%= chat.content %>
         </div>
       </div>
@@ -33,8 +33,8 @@
 <%= form_for @chat, url: chats_path, html: { class: "mt-8", style: "max-width: 600px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center;" } do |f| %>
   <%= f.label :content, "Your Message:", class: "block font-medium mb-2 flex-1" %>
   <%= f.text_area :content, class: "w-full p-2 mb-4 border rounded-lg" %>  <div class="flex justify-between w-full">
-<%= f.submit "Send", class: "rounded-md bg-teal-600 py-2 px-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 flex-1 mr-2" %>
-    <%= button_to "Clear", clear_chats_path, method: :post, class: "rounded-md bg-sky-800 py-2 px-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-800 flex-1" %>  </div>
+<%= button_to "Clear", clear_chats_path, method: :post, class: "rounded-md bg-white border border-sky-600 py-2 px-3 text-center text-sm font-semibold text-sky-600 shadow-sm hover:bg-sky-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 flex-1 mr-2" %>
+<%= f.submit "Send", class: "rounded-md bg-teal-600 py-2 px-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 flex-1" %>
 <% end %>
 
 
