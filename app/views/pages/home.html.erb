@@ -1,3 +1,96 @@
+<style>
+    footer {
+      background-color: #235784;
+      padding: 0px;
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .contact-link, .copyright {
+      color: #ffffff;
+    }
+    .contact-link:hover {
+      color: black;
+      text-decoration: none;
+    }
+    .copyright {
+      font-size: 12px;
+    }
+    /* Modal content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      border-radius: 15px;
+      width: 35%; /* Could be more or less, depending on screen size */
+      align-items: center;
+    }
+    ul {
+      list-style-type: none;
+    }
+    .container {
+      display: flex;
+      width: 60; /* set width as per your requirement */
+    }
+    .close {
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    /* Data Consense Modal*/
+    .datamodal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1000; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgba(0, 0, 0, 0.7); /* Black with opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-data {
+      background-color: #fefefe;
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      border-radius: 5px;
+      width: 60%; /* Could be more or less, depending on screen size */
+    }
+
+    /* Buttons */
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .accept {
+      background-color: #008CBA;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .decline {
+      color: #008CBA;
+      border: 1px solid #008CBA;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+</style>
+
+
+
+
 <div class="py-24 px-6 sm:py-32 lg:px-8">
   <div class="mx-auto max-w-2xl text-center">
     <p class="text-base font-semibold leading-7 text-teal-600">Welcome</p>
@@ -6,3 +99,88 @@
   </div>
 
 </div>
+
+
+
+<!-- Modal Data -->
+<div id="myModal" class="datamodal">
+  <div class="modal-data">
+    <h2>Data Consent and Treatment</h2>
+    <p>We use cookies and similar technologies to analyze and treat informations to give you the user experience. By continuing to use our application, you consent to our Privacy Policy.</p>
+    <div class="buttons">
+      <button id="acceptBtn" class="accept">Accept</button>
+      <a href="https://en.wikipedia.org/wiki/Privacy_policy" target="_blank" rel="noopener" class="decline">Decline</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container-link">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <a href="#" class="contact-link">Contact</a>
+          <div class="copyright">
+            &copy; 2023 Prior. All rights reserved.
+          </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!--Footer Modal -->
+<div class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Contact Us</h2>
+    <p>Here is our contact information:</p>
+      <h3>Customer Service</h3>
+        <li>Email: info@prior.health</li>
+    </div>
+  </div>
+</div>
+
+<!--Footer Script -->
+<script>
+  // Get the modal element
+  var modal = document.querySelector('.modal');
+
+  // Get the link that opens the modal
+  var contactLink = document.querySelector('.contact-link');
+
+  // Get the close button element
+  var closeButton = document.querySelector('.close');
+
+  // Add click event listener to contact link
+  contactLink.addEventListener('click', function() {
+    modal.style.display = 'block';
+  });
+
+  // Add click event listener to close button
+  closeButton.addEventListener('click', function() {
+    modal.style.display = 'none';
+  });
+
+  // Add click event listener to modal background
+  window.addEventListener('click', function(event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  // Get the data consent modal
+  var dataModal = document.getElementById("myModal");
+
+  // Get the accept button
+  var acceptBtn = document.getElementById("acceptBtn");
+
+  // When the page loads, show the data consent modal if the user has not accepted the terms
+  if (!localStorage.getItem("consent")) {
+    dataModal.style.display = "block";
+  }
+
+  // When the user clicks the accept button, store their consent and hide the data consent modal
+  acceptBtn.onclick = function() {
+    localStorage.setItem("consent", true);
+    dataModal.style.display = "none";
+  }
+</script>
