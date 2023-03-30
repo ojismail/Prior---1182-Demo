@@ -9,9 +9,10 @@
     }
     .contact-link, .copyright {
       color: #ffffff;
+      text-decoration: none;
     }
     .contact-link:hover {
-      color: black;
+      color: #115e59;
       text-decoration: none;
     }
     .copyright {
@@ -19,13 +20,14 @@
     }
     /* Modal content */
     .modal-content {
-      background-color: #fefefe;
+      background-color: #ffffff;
       margin: 15% auto; /* 15% from the top and centered */
       padding: 20px;
-      border: 1px solid #888;
-      border-radius: 15px;
-      width: 35%; /* Could be more or less, depending on screen size */
+      border: 3px solid #ffffff;
+      border-radius: 10px;
+      width: 50%; /* Could be more or less, depending on screen size */
       align-items: center;
+      color: #ffffff;
     }
     ul {
       list-style-type: none;
@@ -38,6 +40,7 @@
       float: right;
       font-size: 28px;
       font-weight: bold;
+      color: #94a3b8;
     }
 
     /* Data Consense Modal*/
@@ -70,7 +73,7 @@
     }
 
     .accept {
-      background-color: #008CBA;
+      background-color: #14b8a6;
       color: #fff;
       border: none;
       padding: 10px 20px;
@@ -80,8 +83,8 @@
     }
 
     .decline {
-      color: #008CBA;
-      border: 1px solid #008CBA;
+      color: #075985;
+      border: 1px solid #075985;
       padding: 10px 20px;
       border-radius: 5px;
       text-decoration: none;
@@ -105,8 +108,8 @@
 <!-- Modal Data -->
 <div id="myModal" class="datamodal">
   <div class="modal-data">
-    <h2>Data Consent and Treatment</h2>
-    <p>We use cookies and similar technologies to analyze and treat informations to give you the user experience. By continuing to use our application, you consent to our Privacy Policy.</p>
+    <p class="text-base font-semibold leading-7 text-teal-600 text-xl">Data Consent and Treatment</p>
+    <p class="mt-6 text-lg leading-8 text-gray-600">Welcome to our website! We use cookies and similar technologies to analyze and "treat" information (aka gobble it up like delicious cookies and feed it to AI) to give you the best user experience possible. By continuing to use our application, you're basically inviting us to the cookie jar and we're more than happy to oblige.</p>
     <div class="buttons">
       <button id="acceptBtn" class="accept">Accept</button>
       <a href="https://en.wikipedia.org/wiki/Privacy_policy" target="_blank" rel="noopener" class="decline">Decline</a>
@@ -116,11 +119,11 @@
 
 <footer>
   <div class="container-link">
-    <div class="row">
+    <div class="row bg-teal-600">
       <div class="col-sm-12 text-center">
         <a href="#" class="contact-link">Contact</a>
           <div class="copyright">
-            &copy; 2023 Prior. All rights reserved.
+            &copy; 2023 Prior. AI rights reserved.
           </div>
       </div>
     </div>
@@ -131,8 +134,11 @@
 <div class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h2>Contact Us</h2>
-    <p>info@prior.health</p>
+    <p class="mt-2 text-2xl font-bold tracking-tight text-sky-900 sm:text-2xl">Contact Us</p>
+    <p class="mt-6 text-lg leading-8 text-gray-600"> Welcome to the Contact Us section! First of all, we would like to give a big shoutout to Ozair, Karim, Oliver and Fabian for their amazing work in creating a chat GPT API specifically for healthcare. These four superstars poured their hearts and souls into making this happen, and we couldn't be more grateful. So, if you happen to run into them on the street, please give them a pat on the back (from a safe distance, of course) and tell them they're awesome!
+
+Now, back to business. Our team is dedicated to providing you with the best possible experience, so don't hesitate to drop us a line. And who knows, maybe you'll be the next person we thank in our Contact Us section! </p>
+    <p class="mt-2 text-xl font-semibold tracking-tight text-teal-600 sm:text-xl">info@prior.health</p>
     </div>
   </div>
 </div>
