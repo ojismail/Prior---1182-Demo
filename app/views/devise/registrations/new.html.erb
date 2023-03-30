@@ -34,12 +34,21 @@
     <%= f.input :medical_history, label: 'Medical History', class: "input-field" %>
     <%= f.input :drug_history, label: 'Drug History', class: "input-field" %>
     <%= f.input :allergy_history, label: 'Allergy History', class: "input-field" %>
-    <%= f.input :role, as: :radio_buttons, collection: [['Patient', 0], ['Doctor', 1]], label: 'Role' %>
-  </div>
-  <div class="form-actions" style="margin-bottom: 2rem;">
-    <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
-    <%= link_to "Log in", new_session_path(resource_name), class: "btn btn-primary" %><br />
-  </div>
+
+<div class="form-actions" style="margin-bottom: 2rem;">
+    <%= button_tag(type: "submit", class: "block w-full mb-2 rounded-md bg-sky-800 py-2 px-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-800") do %>
+      Sign up
+    <% end %>
+    <%= button_tag(type: "button", class: "block w-full rounded-md bg-sky-800 py-2 px-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-800", onClick: "location.href='#{new_session_path(resource_name)}'") do %>
+      Log in
+    <% end %><br />
+</div>
+
+
+
+
+
+
 <% end %>
 
 <script>
