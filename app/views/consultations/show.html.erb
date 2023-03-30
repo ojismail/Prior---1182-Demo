@@ -8,17 +8,16 @@
   <% if current_user.doctor? %>
     <div class="p-2">
       <div class="p-2 border-b md:flex md:justify-between">
-        <h4 class="text-xl font-semibold">Consultation Summary</h4>
+        <p class="text-xl font-semibold text-teal-600">Consultation Summary</p>
         <div class="flex md:justify-end space-x-4 justify-center">
-          <%= link_to 'Back', consultations_path, class: 'px-3 py-1 text-sm font-medium text-gray-700 rounded-md border h-8 text-decoration-none border-gray-300 text-white bg-gray-600 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500' %>
-          <%= button_to 'Close', close_consultation_path(@consultation), method: :patch, data: { confirm: 'Are you sure?' }, class: 'px-3 py-1 text-sm font-medium text-gray-700 rounded-md h-8 border text-decoration-none border-gray-300 text-white bg-sky-600 hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500' %>
-          <%= link_to 'Edit', edit_consultation_path(@consultation), class: 'px-3 py-1 text-sm font-medium bg-green-600 rounded-md border text-decoration-none border-green-600 text-white h-8 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500' %>
-          <%= button_to 'Delete', consultation_path(@consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'px-3 py-1 text-sm font-medium  rounded-md border border-red-600  focus:ring-2 bg-red-600 h-8 text-white hover:bg-red-500 focus:ring-offset-2 focus:ring-red-500' %>
+          <%= button_to 'Back', consultations_path, method: :get, class: "block rounded-md bg-teal-600 py-2 px-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600" %>
+          <%= button_to 'Close', close_consultation_path(@consultation), method: :patch, data: { confirm: 'Are you sure?' }, class: "block rounded-md bg-sky-900 py-2 px-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600" %>
+          <%= button_to 'Delete', consultation_path(@consultation), method: :delete, data: { confirm: 'Are you sure?' }, class: "block rounded-md bg-red-500 py-2 px-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500" %>
         </div>
       </div>
       <div class="p-2">
-        <div class="rounded-4 bg-white overflow-hidden shadow px-4 py-3 my-3">
-          <h4 class="text-xl font-semibold mb-3">Patient Details</h4>
+        <div class="rounded-4 bg-white overflow-hidden px-4 py-3 my-3">
+          <p class="text-xl font-semibold mb-3 text-sky-900">Patient Details</p>
           <div class="flex justify-normal">
             <div>
               <div>Patient ID:</div>
@@ -38,43 +37,44 @@
             </div>
           </div>
         </div>
-        <div class="rounded-4 bg-white overflow-hidden shadow px-4 py-3">
-          <h4 class="text-xl mb-4 font-semibold">Patient Response</h4>
-          <table class="w-100 mb-3 rounded-4">
-            <tbody>
-              <tr class="hover:bg-gray-100">
-                <td class="border border-slate-300 p-2"><%= @consultation.symptom.question_1 %></td>
-                <td class="border border-slate-300 p-2"><%= @consultation.questionsandanswer_1 %></td>
-              </tr>
-              <tr class="hover:bg-gray-100">
-                <td class="border border-slate-300 p-2"><%= @consultation.symptom.question_2 %></td>
-                <td class="border border-slate-300 p-2"><%= @consultation.questionsandanswer_2 %></td>
-              </tr>
-              <tr class="hover:bg-gray-100">
-                <td class="border border-slate-300 p-2"><%= @consultation.symptom.question_3 %></td>
-                <td class="border border-slate-300 p-2"><%= @consultation.questionsandanswer_3 %></td>
-              </tr>
-              <tr class="hover:bg-gray-100">
-                <td class="border border-slate-300 p-2"><%= @consultation.symptom.question_4 %></td>
-                <td class="border border-slate-300 p-2"><%= @consultation.questionsandanswer_4 %></td>
-              </tr>
-              <tr class="hover:bg-gray-100">
-                <td class="border border-slate-300 p-2"><%= @consultation.symptom.question_5 %></td>
-                <td class="border border-slate-300 p-2"><%= @consultation.questionsandanswer_5 %></td>
-              </tr>
-              <tr class="hover:bg-gray-100">
-                <td class="border border-slate-300 p-2"><%= @consultation.symptom.question_6 %></td>
-                <td class="border border-slate-300 p-2"><%= @consultation.questionsandanswer_6 %></td>
-              </tr>
-              <tr class="hover:bg-gray-100">
-                <td class="border border-slate-300 p-2"><%= @consultation.symptom.question_7 %></td>
-                <td class="border border-slate-300 p-2"><%= @consultation.questionsandanswer_7 %></td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="rounded-4 bg-white overflow-hidden px-4 py-3">
+          <p class="text-xl font-semibold mb-3 text-sky-900">Patient Response</p>
+          <table class="w-100 mb-3 rounded-4" style="border-collapse: collapse; border: none;">
+  <tbody>
+    <tr class="hover:bg-gray-100" style="border-top: none">
+      <td class="border-slate-300 p-2"><%= @consultation.symptom.question_1 %></td>
+      <td class="p-2"><%= @consultation.questionsandanswer_1 %></td>
+    </tr>
+    <tr class="hover:bg-gray-100" style="border-top: 1px solid #CBD5E0;">
+      <td class="border-slate-300 p-2"><%= @consultation.symptom.question_2 %></td>
+      <td class="p-2"><%= @consultation.questionsandanswer_2 %></td>
+    </tr>
+    <tr class="hover:bg-gray-100" style="border-top: 1px solid #CBD5E0;">
+      <td class="border-slate-300 p-2"><%= @consultation.symptom.question_3 %></td>
+      <td class="p-2"><%= @consultation.questionsandanswer_3 %></td>
+    </tr>
+    <tr class="hover:bg-gray-100" style="border-top: 1px solid #CBD5E0;">
+      <td class="border-slate-300 p-2"><%= @consultation.symptom.question_4 %></td>
+      <td class="p-2"><%= @consultation.questionsandanswer_4 %></td>
+    </tr>
+    <tr class="hover:bg-gray-100" style="border-top: 1px solid #CBD5E0;">
+      <td class="border-slate-300 p-2"><%= @consultation.symptom.question_5 %></td>
+      <td class="p-2"><%= @consultation.questionsandanswer_5 %></td>
+    </tr>
+    <tr class="hover:bg-gray-100" style="border-top: 1px solid #CBD5E0;">
+      <td class="border-slate-300 p-2"><%= @consultation.symptom.question_6 %></td>
+      <td class="p-2"><%= @consultation.questionsandanswer_6 %></td>
+    </tr>
+    <tr class="hover:bg-gray-100" style="border-top: 1px solid #CBD5E0;">
+      <td class="border-slate-300 p-2"><%= @consultation.symptom.question_7 %></td>
+      <td class="p-2"><%= @consultation.questionsandanswer_7 %></td>
+    </tr>
+  </tbody>
+</table>
+
         </div>
-        <div class="rounded-4 bg-white overflow-hidden shadow my-3 p-4">
-          <h4 class="text-xl font-semibold my-3">System Response</h4>
+        <div class="rounded-4 bg-white overflow-hidden my-3 p-4">
+          <p class="text-xl font-semibold mb-3 text-sky-900">System Response</p>
           <% gpt_response_parts = @consultation.gpt_response.split("\n\n") %>
           <% gpt_response_parts.each_with_index do |part, index| %>
           <% title, *items = part.split("\n") %>
@@ -107,7 +107,7 @@
               </ul>
             </dd>
           </div>
-          
+
           <% end %>
         </div>
       </div>
