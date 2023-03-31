@@ -395,3 +395,29 @@ Symptom.create(
         question_7: "Have you noticed any other symptoms, such as chest pain, shortness of breath, or headache?",
         question_7_options: ["Yes, I have chest pain", "Yes, I have shortness of breath", "Yes, I have headache", "Yes, I have two or more of these symptoms", "No, I have not noticed any other symptoms"]
         )
+
+
+        Symptom.create(
+          name: "Bootcampitis",
+          archive: nil,
+          question_1: "How long did the ordeal last?",
+          question_1_options: ["9 weeks", "Felt like forever"],
+
+          question_2: "Which Bootcamp were you a part of?",
+          question_2_options: ["Le Wagon", "Are there any others?"],
+
+          question_3: "Award for best dressed student?",
+          question_3_options: ["Florian", "Rui", "Eloise", "Lukas", "Michael"],
+
+          question_4: "Most likely to be voted class prefect?",
+          question_4_options: ["Florian", "Rui", "Eloise", "Lukas", "Michael"],
+
+          question_5: "Who asked the best questions?",
+          question_5_options: ["Florian", "Rui", "Eloise", "Lukas", "Michael"],
+
+          question_6: "Most likely to be attending from an underground bunker?",
+          question_6_options: ["Florian", "Rui", "Eloise", "Lukas", "Michael"],
+
+          question_7: "Student most likely to be a Le Wagon TA in disguise?",
+          question_7_options: ["Florian", "Rui", "Eloise", "Lukas", "Michael"],
+          )
